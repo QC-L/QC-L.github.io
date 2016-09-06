@@ -84,15 +84,39 @@
 
 
 
-<meta name="description" content="iOS HTML5 JS">
-<meta property="og:type" content="website">
+<meta name="description" content="注意: 此文只是自己翻译学习，如有不对地方还望指出。此文结合如下俩篇文章翻译，一则练习自己的翻译能力，二则真正理解该文章。个人感悟：自己动手写一遍，与浏览一遍，绝对是不一样的原文链接已有翻译文章
+
+作为一名iOS开发者, 你写的每一行代码几乎都是对某些事件的反馈:点击button、接收到网络信息、 一个属性的改变(通过KVO监测) 或者 通过CoreLocation监听用户所在位置的变化 以上等">
+<meta property="og:type" content="article">
 <meta property="og:title" content="暮落晨曦">
-<meta property="og:url" content="http://muluochenxi.com/index.html">
+<meta property="og:url" content="http://muluochenxi.com/2016/09/06/ReactiveCocoa教程-入门-1:2/index.html">
 <meta property="og:site_name" content="暮落晨曦">
-<meta property="og:description" content="iOS HTML5 JS">
+<meta property="og:description" content="注意: 此文只是自己翻译学习，如有不对地方还望指出。此文结合如下俩篇文章翻译，一则练习自己的翻译能力，二则真正理解该文章。个人感悟：自己动手写一遍，与浏览一遍，绝对是不一样的原文链接已有翻译文章
+
+作为一名iOS开发者, 你写的每一行代码几乎都是对某些事件的反馈:点击button、接收到网络信息、 一个属性的改变(通过KVO监测) 或者 通过CoreLocation监听用户所在位置的变化 以上等">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/791210-bc6e985d6fe0555f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/791210-f6103bba9a9b8650.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/791210-072d9753a47ecbba.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/791210-b1e882f7a82e8aa1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/791210-66a1f178789bc767.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/791210-a820f5f27b042d92.gif?imageMogr2/auto-orient/strip">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/791210-aa549dc4ebe8f9b7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/791210-411498432b6da4e8.gif?imageMogr2/auto-orient/strip">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/791210-d8e74308190a86ce.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/791210-658b4b73d7e34512.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/791210-aeb6590889c739bc.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/791210-a273717d4138bad9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/791210-bc346429333ff00d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/791210-bffa59ddab865a1b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/791210-9b2963c7e5fadce2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/791210-5dcdcb04a34da058.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2016-09-06T03:26:39.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="暮落晨曦">
-<meta name="twitter:description" content="iOS HTML5 JS">
+<meta name="twitter:description" content="注意: 此文只是自己翻译学习，如有不对地方还望指出。此文结合如下俩篇文章翻译，一则练习自己的翻译能力，二则真正理解该文章。个人感悟：自己动手写一遍，与浏览一遍，绝对是不一样的原文链接已有翻译文章
+
+作为一名iOS开发者, 你写的每一行代码几乎都是对某些事件的反馈:点击button、接收到网络信息、 一个属性的改变(通过KVO监测) 或者 通过CoreLocation监听用户所在位置的变化 以上等">
+<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/791210-bc6e985d6fe0555f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 
 
 
@@ -113,9 +137,9 @@
 
 
 
-  <link rel="canonical" href="http://muluochenxi.com/"/>
+  <link rel="canonical" href="http://muluochenxi.com/2016/09/06/ReactiveCocoa教程-入门-1:2/"/>
 
-  <title> 暮落晨曦 </title>
+  <title>  | 暮落晨曦 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="">
@@ -136,9 +160,7 @@
     
   
 
-  <div class="container one-collumn sidebar-position-left 
-   page-home 
- ">
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -215,9 +237,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
+
+  <div id="posts" class="posts-expand">
     
-      
 
   
   
@@ -238,9 +260,6 @@
             
               
                 
-                <a class="post-title-link" href="/2016/09/06/ReactiveCocoa教程-入门-1:2/" itemprop="url">
-                  Unbenannt
-                </a>
               
             
           </h1>
@@ -280,9 +299,7 @@
       
 
       
-        
-          
-            <blockquote>
+        <blockquote>
 <p>注意: 此文只是自己翻译学习，如有不对地方还望指出。此文结合如下俩篇文章翻译，一则练习自己的翻译能力，二则真正理解该文章。<br>个人感悟：<strong>自己动手写一遍，与浏览一遍，绝对是不一样的</strong><br><a href="https://www.raywenderlich.com/62699/reactivecocoa-tutorial-pt1" target="_blank" rel="external">原文链接</a><br><a href="http://benbeng.leanote.com/post/ReactiveCocoaTutorial-part1" target="_blank" rel="external">已有翻译文章</a></p>
 </blockquote>
 <p>作为一名iOS开发者, 你写的每一行代码几乎都是对某些事件的反馈:点击button、接收到网络信息、 一个属性的改变(通过KVO监测) 或者 通过CoreLocation监听用户所在位置的变化 以上等等都是很好的例子。然而，这些事件都有不同的编码方式，如: <strong>action、delegate、KVO、回调</strong>等。<a href="https://github.com/ReactiveCocoa/ReactiveCocoa" target="_blank" rel="external">ReactiveCocoa</a>为事件定义了标准的接口，从而可以使用一些基本工具来更容易的连接、过滤和组合。</p>
@@ -460,16 +477,20 @@
 <p>这里最值得注意的是ReactiveCocoa的主要目标是使你的代码更加简洁，更加容易理解。如果应用程序的逻辑都清晰的表示成事件流、流式语法，那这个应用具体做了什么就很好理解了。</p>
 <p>在本教程系列的第二部分，你将学习更先进的语法。比如错误处理以及如何管理不同线程中执行的代码等高级语法。</p>
 
-          
+      
+    </div>
+
+    <div>
+      
         
+
       
     </div>
 
     <div>
       
-    </div>
+        
 
-    <div>
       
     </div>
 
@@ -477,121 +498,32 @@
       
 
       
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
             
+              <a href="/2016/09/06/hello-world/" rel="next" title="Hello World">
+                <i class="fa fa-chevron-left"></i> Hello World
+              </a>
             
-              
-                
-                <a class="post-title-link" href="/2016/09/06/hello-world/" itemprop="url">
-                  Hello World
-                </a>
-              
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
             
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
-            <time itemprop="dateCreated" datetime="2016-09-06T09:30:50+08:00" content="2016-09-06">
-              2016-09-06
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
+          </div>
         </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
       
 
       
-        
-          
-            <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
       
     </footer>
   </article>
 
 
-    
-  </section>
 
-  
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -599,6 +531,10 @@
 
 
           
+  <div class="comments" id="comments">
+    
+  </div>
+
 
         </div>
         
@@ -618,8 +554,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Inhaltsverzeichnis
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Übersicht
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel  sidebar-panel-active ">
+      <section class="site-overview sidebar-panel ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.gif"
@@ -655,6 +600,17 @@
 
       </section>
 
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#响应式登录"><span class="nav-number">1.</span> <span class="nav-text">响应式登录</span></a></li></ol></div>
+            
+          </div>
+        </section>
       
 
     </div>
@@ -751,6 +707,10 @@
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
 
   
 
