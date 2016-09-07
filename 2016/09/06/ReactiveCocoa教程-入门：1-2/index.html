@@ -84,18 +84,16 @@
 
 
 
-<meta name="description" content="ReactiveCocoa教程 - 入门：1/2
-注意: 此文只是自己翻译学习，如有不对地方还望指出。此文结合如下俩篇文章翻译，一则练习自己的翻译能力，二则真正理解该文章。个人感悟：自己动手写一遍，与浏览一遍，绝对是不一样的原文链接已有翻译文章
+<meta name="description" content="注意: 此文只是自己翻译学习，如有不对地方还望指出。此文结合如下俩篇文章翻译，一则练习自己的翻译能力，二则真正理解该文章。个人感悟：自己动手写一遍，与浏览一遍，绝对是不一样的原文链接已有翻译文章
 
-作为一名iOS开发者, 你写的每一行代码几乎都是对某些事件的反馈:点击button、接收到网络信息、 一个属性的改变(通过KVO监测) 或者 通过Cor">
+作为一名iOS开发者, 你写的每一行代码几乎都是对某些事件的反馈:点击button、接收到网络信息、 一个属性的改变(通过KVO监测) 或者 通过CoreLocation监听用户所在位置的变化 以上等">
 <meta property="og:type" content="article">
 <meta property="og:title" content="ReactiveCocoa教程 - 入门：1/2">
 <meta property="og:url" content="http://muluochenxi.com/2016/09/06/ReactiveCocoa教程-入门：1-2/index.html">
 <meta property="og:site_name" content="暮落晨曦's Blog">
-<meta property="og:description" content="ReactiveCocoa教程 - 入门：1/2
-注意: 此文只是自己翻译学习，如有不对地方还望指出。此文结合如下俩篇文章翻译，一则练习自己的翻译能力，二则真正理解该文章。个人感悟：自己动手写一遍，与浏览一遍，绝对是不一样的原文链接已有翻译文章
+<meta property="og:description" content="注意: 此文只是自己翻译学习，如有不对地方还望指出。此文结合如下俩篇文章翻译，一则练习自己的翻译能力，二则真正理解该文章。个人感悟：自己动手写一遍，与浏览一遍，绝对是不一样的原文链接已有翻译文章
 
-作为一名iOS开发者, 你写的每一行代码几乎都是对某些事件的反馈:点击button、接收到网络信息、 一个属性的改变(通过KVO监测) 或者 通过Cor">
+作为一名iOS开发者, 你写的每一行代码几乎都是对某些事件的反馈:点击button、接收到网络信息、 一个属性的改变(通过KVO监测) 或者 通过CoreLocation监听用户所在位置的变化 以上等">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/791210-bc6e985d6fe0555f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/791210-f6103bba9a9b8650.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/791210-072d9753a47ecbba.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
@@ -112,13 +110,12 @@
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/791210-bffa59ddab865a1b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/791210-9b2963c7e5fadce2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/791210-5dcdcb04a34da058.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2016-09-07T03:36:40.000Z">
+<meta property="og:updated_time" content="2016-09-07T04:00:53.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ReactiveCocoa教程 - 入门：1/2">
-<meta name="twitter:description" content="ReactiveCocoa教程 - 入门：1/2
-注意: 此文只是自己翻译学习，如有不对地方还望指出。此文结合如下俩篇文章翻译，一则练习自己的翻译能力，二则真正理解该文章。个人感悟：自己动手写一遍，与浏览一遍，绝对是不一样的原文链接已有翻译文章
+<meta name="twitter:description" content="注意: 此文只是自己翻译学习，如有不对地方还望指出。此文结合如下俩篇文章翻译，一则练习自己的翻译能力，二则真正理解该文章。个人感悟：自己动手写一遍，与浏览一遍，绝对是不一样的原文链接已有翻译文章
 
-作为一名iOS开发者, 你写的每一行代码几乎都是对某些事件的反馈:点击button、接收到网络信息、 一个属性的改变(通过KVO监测) 或者 通过Cor">
+作为一名iOS开发者, 你写的每一行代码几乎都是对某些事件的反馈:点击button、接收到网络信息、 一个属性的改变(通过KVO监测) 或者 通过CoreLocation监听用户所在位置的变化 以上等">
 <meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/791210-bc6e985d6fe0555f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 
 
@@ -341,7 +338,7 @@
       
 
       
-        <h1 id="ReactiveCocoa教程-入门：1-2"><a href="#ReactiveCocoa教程-入门：1-2" class="headerlink" title="ReactiveCocoa教程 - 入门：1/2"></a>ReactiveCocoa教程 - 入门：1/2</h1><blockquote>
+        <blockquote>
 <p>注意: 此文只是自己翻译学习，如有不对地方还望指出。此文结合如下俩篇文章翻译，一则练习自己的翻译能力，二则真正理解该文章。<br>个人感悟：<strong>自己动手写一遍，与浏览一遍，绝对是不一样的</strong><br><a href="https://www.raywenderlich.com/62699/reactivecocoa-tutorial-pt1" target="_blank" rel="external">原文链接</a><br><a href="http://benbeng.leanote.com/post/ReactiveCocoaTutorial-part1" target="_blank" rel="external">已有翻译文章</a></p>
 </blockquote>
 <p>作为一名iOS开发者, 你写的每一行代码几乎都是对某些事件的反馈:点击button、接收到网络信息、 一个属性的改变(通过KVO监测) 或者 通过CoreLocation监听用户所在位置的变化 以上等等都是很好的例子。然而，这些事件都有不同的编码方式，如: <strong>action、delegate、KVO、回调</strong>等。<a href="https://github.com/ReactiveCocoa/ReactiveCocoa" target="_blank" rel="external">ReactiveCocoa</a>为事件定义了标准的接口，从而可以使用一些基本工具来更容易的连接、过滤和组合。</p>
@@ -695,7 +692,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#ReactiveCocoa教程-入门：1-2"><span class="nav-number">1.</span> <span class="nav-text">ReactiveCocoa教程 - 入门：1/2</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#The-Reactive-Playground"><span class="nav-number">1.1.</span> <span class="nav-text">The Reactive Playground</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#添加ReactiveCocoa框架依赖"><span class="nav-number">1.2.</span> <span class="nav-text">添加ReactiveCocoa框架依赖</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Time-To-Play"><span class="nav-number">1.3.</span> <span class="nav-text">Time To Play</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#类型变换"><span class="nav-number">1.4.</span> <span class="nav-text">类型变换</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#什么是一个事件？"><span class="nav-number">1.5.</span> <span class="nav-text">什么是一个事件？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#创建有效状态的Signals-信号"><span class="nav-number">1.6.</span> <span class="nav-text">创建有效状态的Signals(信号)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#信号结合"><span class="nav-number">1.7.</span> <span class="nav-text">信号结合</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#响应式登录"><span class="nav-number">1.8.</span> <span class="nav-text">响应式登录</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#创建信号"><span class="nav-number">1.9.</span> <span class="nav-text">创建信号</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#信号的信号"><span class="nav-number">1.10.</span> <span class="nav-text">信号的信号</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#附加操作"><span class="nav-number">1.11.</span> <span class="nav-text">附加操作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">1.12.</span> <span class="nav-text">总结</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#The-Reactive-Playground"><span class="nav-number">1.</span> <span class="nav-text">The Reactive Playground</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#添加ReactiveCocoa框架依赖"><span class="nav-number">2.</span> <span class="nav-text">添加ReactiveCocoa框架依赖</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Time-To-Play"><span class="nav-number">3.</span> <span class="nav-text">Time To Play</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#类型变换"><span class="nav-number">4.</span> <span class="nav-text">类型变换</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#什么是一个事件？"><span class="nav-number">5.</span> <span class="nav-text">什么是一个事件？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#创建有效状态的Signals-信号"><span class="nav-number">6.</span> <span class="nav-text">创建有效状态的Signals(信号)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#信号结合"><span class="nav-number">7.</span> <span class="nav-text">信号结合</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#响应式登录"><span class="nav-number">8.</span> <span class="nav-text">响应式登录</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#创建信号"><span class="nav-number">9.</span> <span class="nav-text">创建信号</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#信号的信号"><span class="nav-number">10.</span> <span class="nav-text">信号的信号</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#附加操作"><span class="nav-number">11.</span> <span class="nav-text">附加操作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">12.</span> <span class="nav-text">总结</span></a></li></ol></div>
             
           </div>
         </section>
