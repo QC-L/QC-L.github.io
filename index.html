@@ -336,7 +336,7 @@
 <p>放心，这个技术会在本教程中Get到！编程范式是一个不错的讨论主题，但这个ReactiveCocoa教程是一个实际的例子，而不是学术理论。</p>
 <h2 id="The-Reactive-Playground"><a href="#The-Reactive-Playground" class="headerlink" title="The Reactive Playground"></a>The Reactive Playground</h2><p>在这个Reactive教程中，你将在一个非常简单的事例应用中引入响应式编程。下载<a href="http://cdn2.raywenderlich.com/wp-content/uploads/2014/01/ReactivePlayground-Starter.zip" target="_blank" rel="external">示例项目</a>，然后编译运行以保证已经拥有基本设置。(<a href="https://github.com/QC-L/ReactivePlayground/tree/master" target="_blank" rel="external">根据示例项目我也模仿编写一个Demo</a>)</p>
 <p>ReactivePlayground是一个非常简单的应用程序，提供了一个登录界面。当用户输入正确的用户名和密码时，一只可爱的小猫就会映入眼帘。</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/791210-bc6e985d6fe0555f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="登录页面"><br><img src="http://upload-images.jianshu.io/upload_images/791210-f6103bba9a9b8650.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="登录成功后的页面"></p>
+<p><img src="http://blog.muluochenxi.com/img/ReactiveCocoa/1.png" alt="登录页面"><br><img src="http://blog.muluochenxi.com/img/ReactiveCocoa/2.png" alt="登录成功后的页面"></p>
 <p>现在来花时间看看这个简单Demo的代码。很简单，浪费多长时间。</p>
 <p>打开 <strong>ViewController.m</strong>，全局的翻阅一下。你能否快速定位到 <strong>SignIn</strong> 的enabled状态? 能否快速找到 <strong>signInFailureLabel</strong> 什么时候显示/隐藏? 在这个相对简单的例子中可能只需要2-3分钟来回答这个问题。对于复杂的例子，如果是相同类型的，则需要花费相当长的时间。</p>
 <p>使用ReactiveCocoa会让应用程序的的逻辑编的简洁。接下来开始使用。</p>
@@ -352,11 +352,11 @@
 <blockquote>
 <p>注意: Swift文件使用CocoaPods导入, 需要加 <strong>use_frameworks!</strong><br>因此将Podfile中的 <strong>use_frameworks!</strong>取消注释</p>
 </blockquote>
-<p><img src="http://upload-images.jianshu.io/upload_images/791210-072d9753a47ecbba.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="ReactiveCocoa导入"></p>
+<p><img src="http://blog.muluochenxi.com/img/ReactiveCocoa/3.png" alt="ReactiveCocoa导入"></p>
 <blockquote>
 <p>然后执行下载过程<br>$ pod install –verbose –no-repo-update</p>
 </blockquote>
-<p><img src="http://upload-images.jianshu.io/upload_images/791210-b1e882f7a82e8aa1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="导入完成后的工程目录"></p>
+<p><img src="http://blog.muluochenxi.com/img/ReactiveCocoa/4.png" alt="导入完成后的工程目录"></p>
 <h2 id="Time-To-Play"><a href="#Time-To-Play" class="headerlink" title="Time To Play"></a>Time To Play</h2><p>正如介绍中提到的，ReactiveCocoa为处理您的应用程序中发生的事件的不同流的标准接口。在ReactiveCocoa术语，这些被称为信号，并且由RACSignal类表示。</p>
 <p>打开应用的初始的视图控制器， ViewController.m，并在头部引入ReactiveCocoa的头文件。</p>
 <blockquote>
@@ -364,17 +364,17 @@
 </blockquote>
 <p>暂时不要修改ViewDidLoad中其他的代码，在ViewDidLoad的末尾添加一些方法，随便做一些测试：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">[self.userNameText.rac_textSignal subscribeNext:^(id x) &#123;</div><div class="line">    NSLog(@&quot;%@&quot;, x);</div><div class="line">&#125;];</div></pre></td></tr></table></figure></p>
 <p>编译并运行程序, 在用户名的输入框中，输入内容，查看控制台打印结果：</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/791210-66a1f178789bc767.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="控制台打印结果"></p>
+<p><img src="http://blog.muluochenxi.com/img/ReactiveCocoa/5.png" alt="控制台打印结果"></p>
 <p>从上面的打印结果，你可以看出每次修改textfield中的文本时, 该Block块中的代码都会执行。没有target-action, 没有delegate, 只有信号和blocks。</p>
 <p>ReactiveCocoa信号（由<strong>RACSignal</strong>表示）发送事件流给他们的用户。有三种类型的事件知道：next，error和completed。在出现<strong>error</strong>或者信号<strong>completed</strong>之前, 一个信号能送任意数量的事件。在本节中，你会专注于<strong>next event</strong>。请务必阅读第二部分时，它可用来了解error和completed的事件。</p>
 <p><strong>RACSignal</strong>包含很多方法，用于订阅这些不同的事件类型。每个方法都需要一个或多个Block，当事件发生时，在你Block中的逻辑则会执行。在这种情况下，可以看出 <strong>subscribeNext:</strong> 方法被用于提供一个Block给每一个将要执行的 <strong>next event</strong>。<br>ReactiveCocoa 框架使用了许多Category给UIKit框架中的一些基本控件添加了许多信号的方法，因此你可以订阅他们的事件。这就是textfield属性中rac_textSingal的来源。</p>
 <p>原理就介绍到这里，接下来开始使用ReactiveCocoa去为你做一些事情。</p>
 <p>ReactiveCocoa有许多操作，你可以用它们来操纵事件流。例如，你只让3个字符以上的用户名有效。你可以实现 <strong>filter</strong>(过滤) 这个操作。在之前的ViewDidLoad添加如下代码:</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">[[self.userNameText.rac_textSignal filter:^BOOL(id value) &#123;</div><div class="line">    NSString *text = value;</div><div class="line">    return text.length &gt; 3;</div><div class="line">&#125;] subscribeNext:^(id x) &#123;</div><div class="line">    NSLog(@&quot;%@&quot;, x);</div><div class="line">&#125;];</div></pre></td></tr></table></figure>
-<p>运行之后，然后键入一些文本到textField，你会发现。他只会打印textField长度大于3的字符串。<br><img src="http://upload-images.jianshu.io/upload_images/791210-a820f5f27b042d92.gif?imageMogr2/auto-orient/strip" alt="监听图.gif"></p>
+<p>运行之后，然后键入一些文本到textField，你会发现。他只会打印textField长度大于3的字符串。<br><img src="http://blog.muluochenxi.com/img/ReactiveCocoa/监听图.gif" alt="监听图.gif"></p>
 <p>你在这里创建了一个非常简单的事件流。它就是反应式编程的本质，通过数据流来表达应用程序的功能。</p>
 <p>下面这张图片可以帮助你更好的理解数据流向：</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/791210-aa549dc4ebe8f9b7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="filter 过滤数据流"></p>
+<p><img src="http://blog.muluochenxi.com/img/ReactiveCocoa/FilterPipeline.png" alt="filter 过滤数据流"></p>
 <p>从上面的图中可以看出，rac_textSignal是事件的最初来源。数据流通过过滤器时，仅允许字符串的长度是大于三的事件进传递。在事件流的最后一步是 <strong>subscribeNext:</strong> 在这里你可以打印事件的值。</p>
 <p>值得一提的一点是，该filter过滤器的返回值也是一个RACSignal(即返回值为一个信号)。你可以通过如下分步代码来理解数据流向的具体步骤:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">RACSignal *signal = self.userNameText.rac_textSignal;</div><div class="line">RACSignal *filterSignal = [signal filter:^BOOL(id value) &#123;</div><div class="line">     NSString *text = value;</div><div class="line">     return text.length &gt; 3;</div><div class="line">&#125;];</div><div class="line">    </div><div class="line">[filterSignal subscribeNext:^(id x) &#123;</div><div class="line">     NSLog(@&quot;%@&quot;, x);</div><div class="line">&#125;];</div></pre></td></tr></table></figure></p>
 <p>一个RACSignal的每个操作的返回值也是RACSignal，因此，它被称为 <strong>流式接口</strong> (<a href="http://en.wikipedia.org/wiki/Fluent_interface" target="_blank" rel="external">fluent interface</a>)。这样的特征允许你构建事件流，而不需要考虑每一步都使用局部变量。</p>
@@ -387,9 +387,9 @@
 <h2 id="什么是一个事件？"><a href="#什么是一个事件？" class="headerlink" title="什么是一个事件？"></a>什么是一个事件？</h2><p>到目前为止，本教程描述了不同的事件类型，但并没有详细说明这些事件的结构。有趣的是，一个事件绝对可以包含任何事情！</p>
 <p>通过下面这个例子，你可以将另一个操作添加到事件流。添加如下代码到你的ViewDidLoad:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">[[[self.userNameText.rac_textSignal map:^id(NSString *text) &#123;</div><div class="line">    return @(text.length);</div><div class="line">&#125;] filter:^BOOL(NSNumber *value) &#123;</div><div class="line">    return [value integerValue] &gt; 3;</div><div class="line">&#125;] subscribeNext:^(id x) &#123;</div><div class="line">    NSLog(@&quot;%@&quot;, x);</div><div class="line">&#125;];</div></pre></td></tr></table></figure></p>
 <p>如果你编译运行，你会发现打印的是文本的长度：</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/791210-411498432b6da4e8.gif?imageMogr2/auto-orient/strip" alt="map.gif"><br>新添加的map(映射)操作为改变事件数据提供了Block块。它将接收到的事件，通过执行Block块所得的返回值提供给下一个事件。在上面的代码中，map的Block返回了取出的NSString文字的长度, 这使得下一个事件的值则为NSNumber类型。</p>
+<p><img src="http://blog.muluochenxi.com/img/ReactiveCocoa/map.gif" alt="map.gif"><br>新添加的map(映射)操作为改变事件数据提供了Block块。它将接收到的事件，通过执行Block块所得的返回值提供给下一个事件。在上面的代码中，map的Block返回了取出的NSString文字的长度, 这使得下一个事件的值则为NSNumber类型。</p>
 <p>对于它如何工作的请看下面这张图片:</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/791210-d8e74308190a86ce.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Filter And Map"></p>
+<p><img src="http://blog.muluochenxi.com/img/ReactiveCocoa/FilterAndMapPipeline.png" alt="Filter And Map"></p>
 <p>正如你所看到的一样，所有这一切跟着map的操作进行改变, 现在接收到的是NSNumber类型的对象。你可以使用 map 操作去将你接收到的数据转换成你喜欢的类型, 只要他是一个对象类型。</p>
 <blockquote>
 <p>注意: 在上面的例子中text.length属性的类型是NSUInteger。为了用它作为事件的内容，它必须被装箱。幸运的是Objective-C的文字语法中提供了字面量 - @(text.length)。</p>
@@ -407,7 +407,7 @@
 <p>这样就清除掉了非RAC的代码。</p>
 <p>编译并运行应用程序。你会发现textField的内容在无效时，是高亮的；在有效时，是透明的。</p>
 <p>看起来效果不错，如果当前的逻辑以图形化来表示的话，如下图。在下面你可以看到把俩个信号形容成俩个通道，俩个通道做了相同的事情。首先，信号通过map方法映射成判断是否有效的BOOL值，再通过map方法通过二次映射将BOOL值转成UIColor，通过UIColor决定textField的背景颜色。</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/791210-658b4b73d7e34512.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="二次映射 map.png"></p>
+<p><img src="http://blog.muluochenxi.com/img/ReactiveCocoa/TextFieldValidPipeline.png" alt="二次映射 map.png"></p>
 <p>看到这里，你是否有疑问为何要创建俩个独立的validPasswordSignal和validUsernameSignal信号，而不是俩个输入框公用一个信号呢？想知道答案，接着往下看！</p>
 <h2 id="信号结合"><a href="#信号结合" class="headerlink" title="信号结合"></a>信号结合</h2><p>在当前这个App中，登录按钮在用户名输入框和密码输入框都有效时, 才被显示。现在是时候改成 <strong>响应式</strong> 了!</p>
 <p>当前的代码已经具有判断用户名和密码字段是否有效的功能，并且是一个可以返回BOOL类型值的信号; 分别是 <strong>validUsernameSignal</strong> 和 <strong>validPasswordSignal</strong>。接下来的任务就是将这俩个信号结合在一起来决定button是否可以点击。</p>
@@ -422,7 +422,7 @@
 <p>还需要删除 updateUIState, usernameTextFieldChanged和passwordTextFieldChanged方法。</p>
 <p>最后，确保从viewDidLoad中删除updateUIState方法的调用。</p>
 <p>如果你编译运行，检查登录按钮的状态。如果按钮是可用的，说明userNameText和passWordText都是有效状态。和以前的效果一样。</p>
-<p>更新应用程序逻辑后，执行流程如下图:<br><img src="http://upload-images.jianshu.io/upload_images/791210-aeb6590889c739bc.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="执行流程.png"></p>
+<p>更新应用程序逻辑后，执行流程如下图:<br><img src="http://blog.muluochenxi.com/img/ReactiveCocoa/CombinePipeline.png" alt="执行流程.png"></p>
 <p>以上说明了几个非常重要的概念，可以使用ReactiveCocoa去执行一些非常重量级的任务</p>
 <blockquote>
 <ul>
@@ -434,12 +434,12 @@
 <h2 id="响应式登录"><a href="#响应式登录" class="headerlink" title="响应式登录"></a>响应式登录</h2><p>该应用目前使用如上图所示的响应式事件流来管理文本框和按钮的状态。不过，按下按钮操作仍然在使用action做响应，所以下一步是使用 <strong>响应式</strong> 更换剩下的应用程序的逻辑。</p>
 <p>在ViewController.m中, SignIn按钮的Touch Up Inside事件通过StoryBoard与signInTouchUp方法进行关联。如果过你想用响应式替代，首先你需要先断开当前故事版与action的连线。</p>
 <p>打开Main.storyboard, 找到Sign In按钮, 按住Ctrl键单击按钮，会弹出outlet/action连接的界面，找到对应的action连接，点击x删除掉对应的连接。下图很直观的显示出来在哪里可以删除按钮的action:</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/791210-a273717d4138bad9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="删除登录按钮事件.png"></p>
+<p><img src="http://blog.muluochenxi.com/img/ReactiveCocoa/删除登陆按钮事件.png" alt="删除登录按钮事件.png"></p>
 <p>你已经看到了ReactiveCocoa框架为标准的<strong>UIKit</strong>框架的<strong>controls</strong>添加了属性和方法。到现在为止，我们已经使用了rac_textSignal, 发射事件时，文本的变化。为了更好的处理事件，你需要使用ReactiveCocoa中其他的给UIKit添加的controls中的方法— rac_signalForControlEvents。</p>
 <p>回到ViewController.m中, 在viewDidLoad结尾处添加如下代码:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">[[self.signIn rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) &#123;</div><div class="line">        NSLog(@&quot;button clicked&quot;);</div><div class="line">&#125;];</div></pre></td></tr></table></figure></p>
 <p>上述代码通过创建一个按钮的<strong>UIControlEventTouchUpInside</strong>事件信号, 并对该信号进行订阅，使每个这个事件被触发生时，都有Log。</p>
 <p>编译运行，验证是否与我们所想象的那样一致，会出现消息Log。注意，确保用户名和密码都是有效时, 按钮才可以点击。所以在点击按钮之前，先输入一些文字到俩个textField中。</p>
-<p>输入完毕，按钮有效后。点击几次按钮，你可以看到Xcode控制台中会出现如下打印信息:<br><img src="http://upload-images.jianshu.io/upload_images/791210-bc346429333ff00d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="点击时触发的打印效果"></p>
+<p>输入完毕，按钮有效后。点击几次按钮，你可以看到Xcode控制台中会出现如下打印信息:<br><img src="http://blog.muluochenxi.com/img/ReactiveCocoa/6.png" alt="点击时触发的打印效果"></p>
 <p>现在，这个按钮已经具有点击触发事件的信号。下一步就是把该事件与登录流程组合起来。这就出现了问题-但这是好的。打开ReactiveManager.h，看看内部的代码:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">// 实际项目可根据请求结果决定</div><div class="line">typedef void(^SignInResponse)(BOOL);</div><div class="line">@interface ReactiveManager : NSObject</div><div class="line"></div><div class="line">/**</div><div class="line"> *  登录的方法</div><div class="line"> *</div><div class="line"> *  @param username      用户名</div><div class="line"> *  @param password      密码</div><div class="line"> *  @param completeBlock 登录成功后的回调</div><div class="line"> */</div><div class="line">+ (void)signInWithUsername:(NSString *)username</div><div class="line">                  password:(NSString *)password</div><div class="line">                  complete:(SignInResponse)completeBlock;</div><div class="line"></div><div class="line">@end</div></pre></td></tr></table></figure></p>
 <p>该服务需要用户名，密码和完成的 <strong>Block</strong> 作为参数。当登录成功或失败时，<strong>Block</strong> 会执行。你可以在按钮点击事件 <strong>subscribeNext:</strong> 的 <strong>Blcok</strong> 里直接调用这个方法，但是这么做会有些不合适。你可以直接使用 <strong>ReactiveCocoa</strong> 来重写这些代码。</p>
 <blockquote>
@@ -460,7 +460,7 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">2016-03-28 21:44:06.713 ReactivePlayground[2956:83740] Sign in result: &lt;RACDynamicSignal: 0x7fa7fbcb8a80&gt; name:</div></pre></td></tr></table></figure>
 <p>该信号已经执行了 subscribeNext： Block, 但是登录信号的输出结果与我们想要的并不一样!</p>
 <p>通过下图可以告诉你，究竟哪里错了:</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/791210-bffa59ddab865a1b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="信号转变.png"></p>
+<p><img src="http://blog.muluochenxi.com/img/ReactiveCocoa/SignalOfSignals.png" alt="信号转变.png"></p>
 <p>当你点击按钮时,  <strong>rac_signalForControlEvents</strong> 会发出 <strong>next</strong> 事件。<strong>map(映射)</strong> 会创建并返回登录信号, 这意味着事件流的下一步会接收到 <strong>RACSignal</strong> 信号。这就是为什么后面打印出来的是信号，而不是我们想要的结果。</p>
 <p>以上情况也有时会被称为信号的信号；换句话说，一个外信号内包含了一个内信号。你可以中外部信号 <strong>subscribeNext: </strong> 的Block中再订阅信号，但是这样会造成混乱。幸运的是，ReactiveCocoa为这种常见的情况准备了应对方案。</p>
 <h2 id="信号的信号"><a href="#信号的信号" class="headerlink" title="信号的信号"></a>信号的信号</h2><p>要解决这个问题很简单，只要修改 <strong>map(映射)</strong> 函数改为 flattenMap函数, 如下图所示:</p>
@@ -475,14 +475,14 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">[[[self.signIn rac_signalForControlEvents:UIControlEventTouchUpInside] flattenMap:^id(id x) &#123;</div><div class="line">    return [self signInSignal];</div><div class="line">&#125;] subscribeNext:^(NSNumber *signedIn) &#123;</div><div class="line">    BOOL success = [signedIn boolValue];</div><div class="line">    self.signInFailureLabel.hidden = success;</div><div class="line">    if (success) &#123;</div><div class="line">          [self performSegueWithIdentifier:@&quot;signInSuccess&quot; sender:self];</div><div class="line">    &#125;</div><div class="line">&#125;];</div></pre></td></tr></table></figure>
 <p>通过 subscribeNext: Block取到结果，通过该结果更新signInFailureLabel的可见性，并根据结果来决定是否要执行 segue 的跳转。</p>
 <p>编译运行，我们再次看到了那只可爱的小猫。</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/791210-9b2963c7e5fadce2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="LoginSuccess"></p>
+<p><img src="http://blog.muluochenxi.com/img/ReactiveCocoa/final.png" alt="LoginSuccess"></p>
 <p>就现在的应用体验而言，你有没有发什么什么不好的用户体验？当登录服务正在进行时, 应该禁用登录按钮。这可以避免用户重复登录。此外，如果登录失败了一次，显示了错误提示，应当再用户视图登录时隐藏掉。</p>
 <p>但是，问题来了，应该如何添加这个逻辑到当前代码中呢？更改按钮的启用状态，无法使用 map filter 或其他已知的概念。这就可以称之为 <strong>附加操作</strong> 了，因为这个逻辑应该在next事件发生时执行，并不是改变事件本身。</p>
 <h2 id="附加操作"><a href="#附加操作" class="headerlink" title="附加操作"></a>附加操作</h2><p>用以下代码替换之前所写代码：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">[[[[self.signIn rac_signalForControlEvents:UIControlEventTouchUpInside] doNext:^(id x) &#123;</div><div class="line">    self.signIn.enabled = NO;</div><div class="line">    self.signInFailureLabel.hidden = YES;</div><div class="line">&#125;] flattenMap:^id(id x) &#123;</div><div class="line">    return [self signInSignal];</div><div class="line">&#125;] subscribeNext:^(NSNumber *signedIn) &#123;</div><div class="line">    self.signIn.enabled = YES;</div><div class="line">    BOOL success = [signedIn boolValue];</div><div class="line">    self.signInFailureLabel.hidden = success;</div><div class="line">    if (success) &#123;</div><div class="line">       [self performSegueWithIdentifier:@&quot;signInSuccess&quot; sender:self];</div><div class="line">    &#125;</div><div class="line">&#125;];</div></pre></td></tr></table></figure></p>
 <p>你可以看到上面代码添加了一个 <strong>doNext:</strong> , 在触摸事件后添加的。请注意, doNext:并没有返回值, 因为它只是一个附加操作，并且事件本身不变。</p>
 <p>在doNext Block中设置登录按钮不可点击，并隐藏了 signInFailureLabel。并在 subscribeNext: Block中重新启用 登录按钮，并根据结果决定是否显示失败文本。</p>
 <p>现在是时候更新程序执行示意图，包括附加操作：</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/791210-5dcdcb04a34da058.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="doNext附加操作"></p>
+<p><img src="http://blog.muluochenxi.com/img/ReactiveCocoa/doNext.png" alt="doNext附加操作"></p>
 <p>编译运行，并确认按钮启用是否与预期相同。</p>
 <p>如果和你想的一样，那么这个应用就大功告成了。</p>
 <p>如果你在之前没有跟上，可以通过这个地址下载<a href="https://github.com/QC-L/FinalReactivePlayground" target="_blank" rel="external">最终的项目</a></p>
