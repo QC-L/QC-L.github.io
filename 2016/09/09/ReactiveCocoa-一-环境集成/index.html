@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="AFNetworking 3.0,iOS翻译," />
+  <meta name="keywords" content="ReactiveCocoa,iOS,环境集成," />
 
 
 
@@ -84,22 +84,54 @@
 
 
 
-<meta name="description" content="AFNetworking是一款在OS X和iOS下都令人喜爱的网络库。为了迎合iOS新版本的升级, AFNetworking在3.0版本中删除了基于 NSURLConnection API的所有支持。如果你的项目以前使用过这些API，建议您立即升级到基于 NSURLSession 的API的AFNetworking的版本。本指南将引导您完成这个过程。
+<meta name="description" content="众所周知, ReactiveCocoa 是由 Github 工程师主导设计的一款 FRP 应用框架, 关于 RAC 和 FRP 在这里不再多作赘述。今天主要来介绍下RAC的引入。
 
-本指南是为了引导使用AFNetworkin">
+引入方式
+手动引入
+CocoaPods
+Carthage
+
+引入前准备本教程使用 Xcode 8 和 Xcode 7.3.1 同时讲解(因为Xcode8已经发布GM版本, 因此主要讲解Xcode8的适配工作)
+新建工">
 <meta property="og:type" content="article">
-<meta property="og:title" content="AFNetworking3.0">
-<meta property="og:url" content="http://muluochenxi.com/2016/09/06/AFNetworking3-0/index.html">
+<meta property="og:title" content="ReactiveCocoa(一) 环境集成">
+<meta property="og:url" content="http://muluochenxi.com/2016/09/09/ReactiveCocoa-一-环境集成/index.html">
 <meta property="og:site_name" content="暮落晨曦's Blog">
-<meta property="og:description" content="AFNetworking是一款在OS X和iOS下都令人喜爱的网络库。为了迎合iOS新版本的升级, AFNetworking在3.0版本中删除了基于 NSURLConnection API的所有支持。如果你的项目以前使用过这些API，建议您立即升级到基于 NSURLSession 的API的AFNetworking的版本。本指南将引导您完成这个过程。
+<meta property="og:description" content="众所周知, ReactiveCocoa 是由 Github 工程师主导设计的一款 FRP 应用框架, 关于 RAC 和 FRP 在这里不再多作赘述。今天主要来介绍下RAC的引入。
 
-本指南是为了引导使用AFNetworkin">
-<meta property="og:updated_time" content="2016-09-07T04:00:16.000Z">
+引入方式
+手动引入
+CocoaPods
+Carthage
+
+引入前准备本教程使用 Xcode 8 和 Xcode 7.3.1 同时讲解(因为Xcode8已经发布GM版本, 因此主要讲解Xcode8的适配工作)
+新建工">
+<meta property="og:image" content="http://od88oby20.bkt.clouddn.com/img/rac/%E5%B7%A5%E7%A8%8B%E5%88%9B%E5%BB%BA.png">
+<meta property="og:image" content="http://od88oby20.bkt.clouddn.com/img/rac/RAC%E5%AE%98%E6%96%B9%E5%AF%BC%E5%85%A5%E6%B5%81%E7%A8%8B2.png">
+<meta property="og:image" content="http://od88oby20.bkt.clouddn.com/img/rac/git%E6%89%80%E6%94%BE%E7%9B%AE%E5%BD%95.png">
+<meta property="og:image" content="http://od88oby20.bkt.clouddn.com/img/rac/%E7%BB%88%E7%AB%AF%E8%BF%9B%E5%85%A5%E5%B7%A5%E7%A8%8B.png">
+<meta property="og:image" content="http://od88oby20.bkt.clouddn.com/img/rac/%E4%BB%93%E5%BA%93%E5%88%9D%E5%A7%8B%E5%8C%96.png">
+<meta property="og:image" content="http://od88oby20.bkt.clouddn.com/img/rac/%E5%88%9B%E5%BB%BA%E5%AD%90%E6%A8%A1%E5%9D%97.png">
+<meta property="og:image" content="http://od88oby20.bkt.clouddn.com/img/rac/%E5%AD%90%E6%A8%A1%E5%9D%97%E4%B8%8B%E8%BD%BD%E5%AE%8C%E6%AF%95.png">
+<meta property="og:image" content="http://od88oby20.bkt.clouddn.com/img/rac/%E5%AD%90%E6%A8%A1%E5%9D%97%E6%9B%B4%E6%96%B0%E5%91%BD%E4%BB%A4.png">
+<meta property="og:image" content="http://od88oby20.bkt.clouddn.com/img/rac/%E6%9B%B4%E6%96%B0%E5%AE%8C%E6%88%90%E5%AD%90%E6%A8%A1%E5%9D%97%E5%90%8E.png">
+<meta property="og:image" content="http://od88oby20.bkt.clouddn.com/gif/rac/%E5%AF%BC%E5%85%A5RAC.gif">
+<meta property="og:image" content="http://od88oby20.bkt.clouddn.com/gif/rac/%E5%AF%BC%E5%85%A5RACSwift.gif">
+<meta property="og:image" content="http://od88oby20.bkt.clouddn.com/gif/rac/%E5%AF%BC%E5%85%A5Result.gif">
+<meta property="og:image" content="http://od88oby20.bkt.clouddn.com/gif/rac/%E5%AF%BC%E5%85%A5framework.gif">
+<meta property="og:updated_time" content="2016-09-12T08:48:19.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="AFNetworking3.0">
-<meta name="twitter:description" content="AFNetworking是一款在OS X和iOS下都令人喜爱的网络库。为了迎合iOS新版本的升级, AFNetworking在3.0版本中删除了基于 NSURLConnection API的所有支持。如果你的项目以前使用过这些API，建议您立即升级到基于 NSURLSession 的API的AFNetworking的版本。本指南将引导您完成这个过程。
+<meta name="twitter:title" content="ReactiveCocoa(一) 环境集成">
+<meta name="twitter:description" content="众所周知, ReactiveCocoa 是由 Github 工程师主导设计的一款 FRP 应用框架, 关于 RAC 和 FRP 在这里不再多作赘述。今天主要来介绍下RAC的引入。
 
-本指南是为了引导使用AFNetworkin">
+引入方式
+手动引入
+CocoaPods
+Carthage
+
+引入前准备本教程使用 Xcode 8 和 Xcode 7.3.1 同时讲解(因为Xcode8已经发布GM版本, 因此主要讲解Xcode8的适配工作)
+新建工">
+<meta name="twitter:image" content="http://od88oby20.bkt.clouddn.com/img/rac/%E5%B7%A5%E7%A8%8B%E5%88%9B%E5%BB%BA.png">
 
 
 
@@ -120,9 +152,9 @@
 
 
 
-  <link rel="canonical" href="http://muluochenxi.com/2016/09/06/AFNetworking3-0/"/>
+  <link rel="canonical" href="http://muluochenxi.com/2016/09/09/ReactiveCocoa-一-环境集成/"/>
 
-  <title> AFNetworking3.0 | 暮落晨曦's Blog </title>
+  <title> ReactiveCocoa(一) 环境集成 | 暮落晨曦's Blog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -291,7 +323,7 @@
             
             
               
-                AFNetworking3.0
+                ReactiveCocoa(一) 环境集成
               
             
           </h1>
@@ -303,8 +335,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-09-06T11:33:32+08:00" content="2016-09-06">
-              2016-09-06
+            <time itemprop="dateCreated" datetime="2016-09-09T15:24:24+08:00" content="2016-09-09">
+              2016-09-09
             </time>
           </span>
 
@@ -317,8 +349,8 @@
               <span class="post-meta-item-text">分类于</span>
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/iOS翻译/" itemprop="url" rel="index">
-                    <span itemprop="name">iOS翻译</span>
+                  <a href="/categories/ReactiveCocoa/" itemprop="url" rel="index">
+                    <span itemprop="name">ReactiveCocoa</span>
                   </a>
                 </span>
 
@@ -333,8 +365,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/09/06/AFNetworking3-0/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/09/06/AFNetworking3-0/" itemprop="commentsCount"></span>
+                <a href="/2016/09/09/ReactiveCocoa-一-环境集成/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/09/09/ReactiveCocoa-一-环境集成/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -358,44 +390,47 @@
 
       
         <blockquote>
-<p>AFNetworking是一款在OS X和iOS下都令人喜爱的网络库。为了迎合iOS新版本的升级, AFNetworking在3.0版本中删除了基于 <del><strong>NSURLConnection</strong></del> API的所有支持。如果你的项目以前使用过这些API，建议您立即升级到基于 <strong>NSURLSession</strong> 的API的AFNetworking的版本。本指南将引导您完成这个过程。</p>
+<p>众所周知, <strong>ReactiveCocoa</strong> 是由 <strong>Github</strong> 工程师主导设计的一款 <strong>FRP</strong> 应用框架, 关于 <strong>RAC</strong> 和 <strong>FRP</strong> 在这里不再多作赘述。今天主要来介绍下RAC的引入。</p>
 </blockquote>
-<p>本指南是为了引导使用AFNetworking 2.x升级到最新的版本API，以达到过渡的目的，并且解释了新增和更改的设计结构。</p>
-<h2 id="新设备要求-iOS-7-Mac-OS-X-10-9-watchOS-2-tvOS-9-amp-Xcode-7"><a href="#新设备要求-iOS-7-Mac-OS-X-10-9-watchOS-2-tvOS-9-amp-Xcode-7" class="headerlink" title="新设备要求: iOS 7, Mac OS X 10.9, watchOS 2, tvOS 9, &amp; Xcode 7"></a>新设备要求: iOS 7, Mac OS X 10.9, watchOS 2, tvOS 9, &amp; Xcode 7</h2><p>AFNetworking 3.0正式支持的iOS 7， Mac OS X的10.9， watchOS 2 ， tvOS 9 和Xcode 7。如果你想使用AFNetworking在针对较旧版本的SDK项目，请检查<a href="https://github.com/AFNetworking/AFNetworking/blob/master/README.md#requirements" target="_blank" rel="external">README</a>的兼容性信息。</p>
-<h2 id="NSURLConnection的API已废弃"><a href="#NSURLConnection的API已废弃" class="headerlink" title="NSURLConnection的API已废弃"></a>NSURLConnection的API已废弃</h2><p>AFNetworking 1.0建立在NSURLConnection的基础API之上 ，AFNetworking 2.0开始使用NSURLConnection的基础API ，以及较新基于NSURLSession的API的选项。 AFNetworking 3.0现已完全基于NSURLSession的API，这降低了维护的负担，同时支持苹果增强关于NSURLSession提供的任何额外功能。由于Xcode 7中，NSURLConnection的API已经正式被苹果弃用。虽然该API将继续运行，但将没有新功能将被添加，并且苹果已经通知所有基于网络的功能，以充分使NSURLSession向前发展。</p>
-<p>AFNetworking 2.X将继续获得关键的隐患和安全补丁，但没有新的功能将被添加。Alamofire(Swift下的网络请求)软件基金会建议，所有的项目迁移到基于NSURLSession的API。</p>
-<h2 id="弃用的类"><a href="#弃用的类" class="headerlink" title="弃用的类"></a>弃用的类</h2><p>下面的类已从AFNetworking 3.0中废弃：</p>
-<ul>
-<li>AFURLConnectionOperation</li>
-<li>AFHTTPRequestOperation</li>
-<li>AFHTTPRequestOperationManager</li>
+<h1 id="引入方式"><a href="#引入方式" class="headerlink" title="引入方式"></a>引入方式</h1><ul>
+<li>手动引入</li>
+<li>CocoaPods</li>
+<li>Carthage</li>
 </ul>
-<h2 id="修改的类"><a href="#修改的类" class="headerlink" title="修改的类"></a>修改的类</h2><p>下面的类包含基于NSURLConnection的API的内部实现。他们已经被使用NSURLSession重构:</p>
-<ul>
-<li>UIImageView+AFNetworking</li>
-<li>UIWebView+AFNetworking</li>
-<li>UIButton+AFNetworking</li>
-</ul>
-<h2 id="迁移"><a href="#迁移" class="headerlink" title="迁移"></a>迁移</h2><hr>
-<h4 id="AFHTTPRequestOperationManager-核心代码"><a href="#AFHTTPRequestOperationManager-核心代码" class="headerlink" title="AFHTTPRequestOperationManager 核心代码"></a>AFHTTPRequestOperationManager 核心代码</h4><p>如果你以前使用 <strong>AFHTTPRequestOperationManager</strong> ， 你将需要迁移去使用 <strong>AFHTTPSessionManager</strong>。 以下的类在两者过渡间并没有变化：</p>
-<ul>
-<li>securityPolicy</li>
-<li>requestSerializer</li>
-<li>responseSerializer</li>
-</ul>
-<p>接下来举一个关于AFHTTPSessionManager的简单例子。<strong>注意</strong>HTTP网络请求返回的不再是AFHTTPRequestOperation, 修改成为了NSURLSessionTask，并且成功和失败的Block块中的参数也变更为了NSURLSessionTask，而不再是AFHTTPRequestOperation。</p>
-<h5 id="AFNetworking-2-x"><a href="#AFNetworking-2-x" class="headerlink" title="AFNetworking 2.x"></a>AFNetworking 2.x</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];</div><div class="line">[manager GET:@&quot;请求的url&quot; parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) &#123;</div><div class="line">        NSLog(@&quot;成功&quot;);</div><div class="line">&#125; failure:^(AFHTTPRequestOperation *operation, NSError*error) &#123;</div><div class="line">        NSLog(@&quot;失败&quot;);</div><div class="line">&#125;];</div></pre></td></tr></table></figure>
-<h5 id="AFNetworking-3-0"><a href="#AFNetworking-3-0" class="headerlink" title="AFNetworking 3.0"></a>AFNetworking 3.0</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">AFHTTPSessionManager *session = [AFHTTPSessionManager manager];</div><div class="line">[session GET:@&quot;请求的url&quot; parameters:nil success:^(NSURLSessionDataTask *task, id responseObject) &#123;</div><div class="line">        NSLog(@&quot;成功&quot;);</div><div class="line">&#125; failure:^(NSURLSessionDataTask *task, NSError *error) &#123;</div><div class="line">        NSLog(@&quot;失败&quot;);        </div><div class="line">&#125;];</div></pre></td></tr></table></figure>
-<h4 id="AFHTTPRequestOperation-核心代码"><a href="#AFHTTPRequestOperation-核心代码" class="headerlink" title="AFHTTPRequestOperation 核心代码"></a>AFHTTPRequestOperation 核心代码</h4><p>与NSURLConnection对象不同，每个共享应用范围的设置如会话管理、缓存策略、Cookie存储以及URL协议等，这些NSURLSession对象都可以单独进行配置。使用特定的配置来初始化会话，它可以发送任务来获取数据，并上传或下载文件。</p>
-<p>在AFNetworking 2.0中，使用AFHTTPRequestOperation，有可能创建一个没有额外开销的独立的网络请求来获取数据。NSURLSession则需要更多的开销，为了获得所要请求的数据。</p>
-<p>接下来，将要通过AFHTTPSessionManager创建一个对象，并创建一个任务和启动它。</p>
-<h5 id="AFNetworking-2-x-1"><a href="#AFNetworking-2-x-1" class="headerlink" title="AFNetworking 2.x"></a>AFNetworking 2.x</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">NSURL *URL = [NSURL URLWithString:@&quot;&quot;];</div><div class="line">NSURLRequest *request = [NSURLRequest requestWithURL:URL];</div><div class="line">AFHTTPRequestOperation *op = [[AFHTTPRequestOperation alloc] initWithRequest:request];</div><div class="line">op.responseSerializer = [AFJSONResponseSerializer serializer];</div><div class="line">[op setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) &#123;</div><div class="line">        NSLog(@&quot;JSON: %@&quot;, responseObject);</div><div class="line">&#125; failure:^(AFHTTPRequestOperation *operation, NSError *error) &#123;</div><div class="line">        NSLog(@&quot;Error: %@&quot;, error);</div><div class="line">&#125;];</div><div class="line">[[NSOperationQueue mainQueue] addOperation:op];</div></pre></td></tr></table></figure>
-<h5 id="AFNetworking-3-0-1"><a href="#AFNetworking-3-0-1" class="headerlink" title="AFNetworking 3.0"></a>AFNetworking 3.0</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">NSURL *URL = [NSURL URLWithString:@&quot;&quot;];</div><div class="line">AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];</div><div class="line">[manager GET:URL.absoluteString parameters:nil success:^(NSURLSessionTask *task, id responseObject) &#123;</div><div class="line">        NSLog(@&quot;JSON: %@&quot;, responseObject);</div><div class="line">&#125; failure:^(NSURLSessionTask *operation, NSError *error) &#123;</div><div class="line">        NSLog(@&quot;Error: %@&quot;, error);</div><div class="line">&#125;];</div></pre></td></tr></table></figure>
-<h4 id="UIKit的迁移"><a href="#UIKit的迁移" class="headerlink" title="UIKit的迁移"></a>UIKit的迁移</h4><p>图片下载已经被重构，以遵循AlamofireImage架构与新的AFImageDownloader类。这个类的图片下载职责的代理人是UIButton与UIImageView的类目，并且提供了一些方法，在必要时可以自定义。类别中，下载远程图片的实际方法没有改变。</p>
-<p>UIWebView的类目被重构为使用AFHTTPSessionManager作为其网络请求。</p>
-<h4 id="UIAlertView的类目被废弃"><a href="#UIAlertView的类目被废弃" class="headerlink" title="UIAlertView的类目被废弃"></a>UIAlertView的类目被废弃</h4><p>从AFNetworking 3.0后UIAlertView的类目因过时而被废弃。并没有提供UIAlertController类目的计划，因为这是应用程序应处理的逻辑，而不是这个库。</p>
-<p>原文链接: <a href="https://github.com/AFNetworking/AFNetworking/wiki/AFNetworking-3.0-Migration-Guide#new-requirements-ios-7-mac-os-x-109-watchos-2-tvos-9--xcode-7" target="_blank" rel="external">AFNetworking 3.0</a><br>纯属个人翻译，如有错误，还请纠正。</p>
-
+<h1 id="引入前准备"><a href="#引入前准备" class="headerlink" title="引入前准备"></a>引入前准备</h1><p>本教程使用 <strong>Xcode 8</strong> 和 <strong>Xcode 7.3.1</strong> 同时讲解(因为Xcode8已经发布GM版本, 因此主要讲解Xcode8的适配工作)</p>
+<p>新建工程 起名 <strong>RACImport</strong><br><img src="http://od88oby20.bkt.clouddn.com/img/rac/%E5%B7%A5%E7%A8%8B%E5%88%9B%E5%BB%BA.png" alt="新建工程"></p>
+<h1 id="手动引入"><a href="#手动引入" class="headerlink" title="手动引入"></a>手动引入</h1><p>在手动引入之前, 我们先来看看官方给出的引入流程。</p>
+<p><img src="http://od88oby20.bkt.clouddn.com/img/rac/RAC%E5%AE%98%E6%96%B9%E5%AF%BC%E5%85%A5%E6%B5%81%E7%A8%8B2.png" alt="RAC官方导入流程"></p>
+<h2 id="添加-ReactiveCocoa-的源到你的工程中-需要使用到-Git-子模块"><a href="#添加-ReactiveCocoa-的源到你的工程中-需要使用到-Git-子模块" class="headerlink" title="添加 ReactiveCocoa 的源到你的工程中, 需要使用到 Git 子模块"></a>添加 <strong>ReactiveCocoa</strong> 的源到你的工程中, 需要使用到 <strong>Git</strong> 子模块</h2><p>这里说到了添加 <strong>Git</strong> 子模块, 关于添加 <strong>Git</strong> 以及添加 <strong>Git</strong> 子模块在这都不作不详细赘述。<br>首先在工程目录中, 添加一个 <strong>Git</strong> 仓库:<br><img src="http://od88oby20.bkt.clouddn.com/img/rac/git%E6%89%80%E6%94%BE%E7%9B%AE%E5%BD%95.png" alt="进入到工程目录中"><br>对应到终端<br><img src="http://od88oby20.bkt.clouddn.com/img/rac/%E7%BB%88%E7%AB%AF%E8%BF%9B%E5%85%A5%E5%B7%A5%E7%A8%8B.png" alt="终端命令进入文件夹"></p>
+<p>调用git初始化命令</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git init</div></pre></td></tr></table></figure>
+<p>显示初始化成功如下图</p>
+<p><img src="http://od88oby20.bkt.clouddn.com/img/rac/%E4%BB%93%E5%BA%93%E5%88%9D%E5%A7%8B%E5%8C%96.png" alt="初始化"></p>
+<p>然后调用命令</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git submodule add https://github.com/ReactiveCocoa/ReactiveCocoa.git external/ReactiveCocoa</div></pre></td></tr></table></figure>
+<p>开始下载 Git 子模块<br><img src="http://od88oby20.bkt.clouddn.com/img/rac/%E5%88%9B%E5%BB%BA%E5%AD%90%E6%A8%A1%E5%9D%97.png" alt="下载子模块"></p>
+<p>下载完毕后, 提示如下:<br><img src="http://od88oby20.bkt.clouddn.com/img/rac/%E5%AD%90%E6%A8%A1%E5%9D%97%E4%B8%8B%E8%BD%BD%E5%AE%8C%E6%AF%95.png" alt="子模块下载完毕"></p>
+<p>此时, 官方给出的导入步骤中的第一步完成</p>
+<h2 id="运行子模块更新命令"><a href="#运行子模块更新命令" class="headerlink" title="运行子模块更新命令"></a>运行子模块更新命令</h2><p>执行以下代码, 更新子模块</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git submodule update --init --recursive</div></pre></td></tr></table></figure>
+<p>运行结果如下:</p>
+<p><img src="http://od88oby20.bkt.clouddn.com/img/rac/%E5%AD%90%E6%A8%A1%E5%9D%97%E6%9B%B4%E6%96%B0%E5%91%BD%E4%BB%A4.png" alt="运行命令后"></p>
+<p>其中更新完成后, 会多出如下几个依赖库:</p>
+<p><img src="http://od88oby20.bkt.clouddn.com/img/rac/%E6%9B%B4%E6%96%B0%E5%AE%8C%E6%88%90%E5%AD%90%E6%A8%A1%E5%9D%97%E5%90%8E.png" alt="依赖库"></p>
+<blockquote>
+<p>注: 最新版本中添加了, <strong>ReactiveSwift</strong> , 并且支持 <strong>Xcode 8</strong></p>
+</blockquote>
+<h2 id="拖拽三种-xcodeproj-文件到你的工程中"><a href="#拖拽三种-xcodeproj-文件到你的工程中" class="headerlink" title="拖拽三种 .xcodeproj 文件到你的工程中"></a>拖拽三种 .xcodeproj 文件到你的工程中</h2><h3 id="Xcode-8"><a href="#Xcode-8" class="headerlink" title="Xcode 8"></a>Xcode 8</h3><p>官方给出的文档中, 已经说明需要将 <code>ReactiveCocoa.xcodeproj</code>, <code>Carthage/Checkouts/ReactiveSwift/ReactiveSwift.xcodeproj</code>, and <code>Carthage/Checkouts/Result/Result.xcodeproj</code> 拖拽到你自己的工程中</p>
+<p>在工程中创建一个 Group 起名 <strong>Frameworks</strong></p>
+<h5 id="导入ReactiveCocoa-xcodeproj"><a href="#导入ReactiveCocoa-xcodeproj" class="headerlink" title="导入ReactiveCocoa.xcodeproj"></a>导入ReactiveCocoa.xcodeproj</h5><p><img src="http://od88oby20.bkt.clouddn.com/gif/rac/%E5%AF%BC%E5%85%A5RAC.gif" alt="导入ReactiveCocoa.xcodeproj"></p>
+<h5 id="导入ReactiveSwift-xcodeproj"><a href="#导入ReactiveSwift-xcodeproj" class="headerlink" title="导入ReactiveSwift.xcodeproj"></a>导入ReactiveSwift.xcodeproj</h5><p><img src="http://od88oby20.bkt.clouddn.com/gif/rac/%E5%AF%BC%E5%85%A5RACSwift.gif" alt="导入ReactiveSwift.xcodeproj"></p>
+<h5 id="导入Reuslt-xcodeproj"><a href="#导入Reuslt-xcodeproj" class="headerlink" title="导入Reuslt.xcodeproj"></a>导入Reuslt.xcodeproj</h5><p><img src="http://od88oby20.bkt.clouddn.com/gif/rac/%E5%AF%BC%E5%85%A5Result.gif" alt="导入Result.xcodeproj"></p>
+<h4 id="Xcode-7-3-1"><a href="#Xcode-7-3-1" class="headerlink" title="Xcode 7.3.1"></a>Xcode 7.3.1</h4><h2 id="在你工程目录的-“General”-的-“Embedded-Binaries”-中添加以上三种Framework"><a href="#在你工程目录的-“General”-的-“Embedded-Binaries”-中添加以上三种Framework" class="headerlink" title="在你工程目录的 “General” 的 “Embedded Binaries” 中添加以上三种Framework"></a>在你工程目录的 “General” 的 “Embedded Binaries” 中添加以上三种Framework</h2><blockquote>
+<p>注:这里因为一般是iOS开发因此举例导入都是iOS的Framework框架</p>
+<h3 id="Xcode-8-1"><a href="#Xcode-8-1" class="headerlink" title="Xcode 8"></a>Xcode 8</h3></blockquote>
+<p>分别引入 <strong>Result.framework</strong>, <strong>ReactiveCocoa.framework</strong>, <strong>ReactiveSwift.framework</strong></p>
+<p><img src="http://od88oby20.bkt.clouddn.com/gif/rac/%E5%AF%BC%E5%85%A5framework.gif" alt="添加三种Framework"></p>
+<h3 id="Xcode-7-3-1-1"><a href="#Xcode-7-3-1-1" class="headerlink" title="Xcode 7.3.1"></a>Xcode 7.3.1</h3>
       
     </div>
 
@@ -438,9 +473,11 @@
       
         <div class="post-tags">
           
-            <a href="/tags/AFNetworking-3-0/" rel="tag">#AFNetworking 3.0</a>
+            <a href="/tags/ReactiveCocoa/" rel="tag">#ReactiveCocoa</a>
           
-            <a href="/tags/iOS翻译/" rel="tag">#iOS翻译</a>
+            <a href="/tags/iOS/" rel="tag">#iOS</a>
+          
+            <a href="/tags/环境集成/" rel="tag">#环境集成</a>
           
         </div>
       
@@ -449,13 +486,13 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2016/09/06/ReactiveCocoa教程-入门：1-2/" rel="next" title="ReactiveCocoa教程 - 入门：1/2">
+                <i class="fa fa-chevron-left"></i> ReactiveCocoa教程 - 入门：1/2
+              </a>
+            
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/09/06/ReactiveCocoa教程-入门：1-2/" rel="prev" title="ReactiveCocoa教程 - 入门：1/2">
-                ReactiveCocoa教程 - 入门：1/2 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -470,10 +507,10 @@
 
     <div class="post-spread">
       
-        <div class="ds-share flat" data-thread-key="2016/09/06/AFNetworking3-0/"
-     data-title="AFNetworking3.0"
+        <div class="ds-share flat" data-thread-key="2016/09/09/ReactiveCocoa-一-环境集成/"
+     data-title="ReactiveCocoa(一) 环境集成"
      data-content=""
-     data-url="http://muluochenxi.com/2016/09/06/AFNetworking3-0/">
+     data-url="http://muluochenxi.com/2016/09/09/ReactiveCocoa-一-环境集成/">
   <div class="ds-share-inline">
     <ul  class="ds-share-icons-16">
 
@@ -503,8 +540,8 @@
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2016/09/06/AFNetworking3-0/"
-           data-title="AFNetworking3.0" data-url="http://muluochenxi.com/2016/09/06/AFNetworking3-0/">
+      <div class="ds-thread" data-thread-key="2016/09/09/ReactiveCocoa-一-环境集成/"
+           data-title="ReactiveCocoa(一) 环境集成" data-url="http://muluochenxi.com/2016/09/09/ReactiveCocoa-一-环境集成/">
       </div>
     
   </div>
@@ -633,7 +670,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#新设备要求-iOS-7-Mac-OS-X-10-9-watchOS-2-tvOS-9-amp-Xcode-7"><span class="nav-number">1.</span> <span class="nav-text">新设备要求: iOS 7, Mac OS X 10.9, watchOS 2, tvOS 9, & Xcode 7</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#NSURLConnection的API已废弃"><span class="nav-number">2.</span> <span class="nav-text">NSURLConnection的API已废弃</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#弃用的类"><span class="nav-number">3.</span> <span class="nav-text">弃用的类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#修改的类"><span class="nav-number">4.</span> <span class="nav-text">修改的类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#迁移"><span class="nav-number">5.</span> <span class="nav-text">迁移</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#AFHTTPRequestOperationManager-核心代码"><span class="nav-number">5.0.1.</span> <span class="nav-text">AFHTTPRequestOperationManager 核心代码</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#AFNetworking-2-x"><span class="nav-number">5.0.1.1.</span> <span class="nav-text">AFNetworking 2.x</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#AFNetworking-3-0"><span class="nav-number">5.0.1.2.</span> <span class="nav-text">AFNetworking 3.0</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#AFHTTPRequestOperation-核心代码"><span class="nav-number">5.0.2.</span> <span class="nav-text">AFHTTPRequestOperation 核心代码</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#AFNetworking-2-x-1"><span class="nav-number">5.0.2.1.</span> <span class="nav-text">AFNetworking 2.x</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#AFNetworking-3-0-1"><span class="nav-number">5.0.2.2.</span> <span class="nav-text">AFNetworking 3.0</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#UIKit的迁移"><span class="nav-number">5.0.3.</span> <span class="nav-text">UIKit的迁移</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#UIAlertView的类目被废弃"><span class="nav-number">5.0.4.</span> <span class="nav-text">UIAlertView的类目被废弃</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#引入方式"><span class="nav-number">1.</span> <span class="nav-text">引入方式</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#引入前准备"><span class="nav-number">2.</span> <span class="nav-text">引入前准备</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#手动引入"><span class="nav-number">3.</span> <span class="nav-text">手动引入</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#添加-ReactiveCocoa-的源到你的工程中-需要使用到-Git-子模块"><span class="nav-number">3.1.</span> <span class="nav-text">添加 ReactiveCocoa 的源到你的工程中, 需要使用到 Git 子模块</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#运行子模块更新命令"><span class="nav-number">3.2.</span> <span class="nav-text">运行子模块更新命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#拖拽三种-xcodeproj-文件到你的工程中"><span class="nav-number">3.3.</span> <span class="nav-text">拖拽三种 .xcodeproj 文件到你的工程中</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Xcode-8"><span class="nav-number">3.3.1.</span> <span class="nav-text">Xcode 8</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#导入ReactiveCocoa-xcodeproj"><span class="nav-number">3.3.1.0.1.</span> <span class="nav-text">导入ReactiveCocoa.xcodeproj</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#导入ReactiveSwift-xcodeproj"><span class="nav-number">3.3.1.0.2.</span> <span class="nav-text">导入ReactiveSwift.xcodeproj</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#导入Reuslt-xcodeproj"><span class="nav-number">3.3.1.0.3.</span> <span class="nav-text">导入Reuslt.xcodeproj</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Xcode-7-3-1"><span class="nav-number">3.3.1.1.</span> <span class="nav-text">Xcode 7.3.1</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#在你工程目录的-“General”-的-“Embedded-Binaries”-中添加以上三种Framework"><span class="nav-number">3.4.</span> <span class="nav-text">在你工程目录的 “General” 的 “Embedded Binaries” 中添加以上三种Framework</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Xcode-8-1"><span class="nav-number">3.4.1.</span> <span class="nav-text">Xcode 8</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Xcode-7-3-1-1"><span class="nav-number">3.4.2.</span> <span class="nav-text">Xcode 7.3.1</span></a></li></ol></li></ol></li></ol></div>
             
           </div>
         </section>

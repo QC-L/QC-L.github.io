@@ -4,6 +4,53 @@
   
     
     <entry>
+      <title><![CDATA[ReactiveCocoa(一) 环境集成]]></title>
+      <url>http://muluochenxi.com/2016/09/09/ReactiveCocoa-%E4%B8%80-%E7%8E%AF%E5%A2%83%E9%9B%86%E6%88%90/</url>
+      <content type="html"><![CDATA[<blockquote>
+<p>众所周知, <strong>ReactiveCocoa</strong> 是由 <strong>Github</strong> 工程师主导设计的一款 <strong>FRP</strong> 应用框架, 关于 <strong>RAC</strong> 和 <strong>FRP</strong> 在这里不再多作赘述。今天主要来介绍下RAC的引入。</p>
+</blockquote>
+<h1 id="引入方式"><a href="#引入方式" class="headerlink" title="引入方式"></a>引入方式</h1><ul>
+<li>手动引入</li>
+<li>CocoaPods</li>
+<li>Carthage</li>
+</ul>
+<h1 id="引入前准备"><a href="#引入前准备" class="headerlink" title="引入前准备"></a>引入前准备</h1><p>本教程使用 <strong>Xcode 8</strong> 和 <strong>Xcode 7.3.1</strong> 同时讲解(因为Xcode8已经发布GM版本, 因此主要讲解Xcode8的适配工作)</p>
+<p>新建工程 起名 <strong>RACImport</strong><br><img src="http://od88oby20.bkt.clouddn.com/img/rac/%E5%B7%A5%E7%A8%8B%E5%88%9B%E5%BB%BA.png" alt="新建工程"></p>
+<h1 id="手动引入"><a href="#手动引入" class="headerlink" title="手动引入"></a>手动引入</h1><p>在手动引入之前, 我们先来看看官方给出的引入流程。</p>
+<p><img src="http://od88oby20.bkt.clouddn.com/img/rac/RAC%E5%AE%98%E6%96%B9%E5%AF%BC%E5%85%A5%E6%B5%81%E7%A8%8B2.png" alt="RAC官方导入流程"></p>
+<h2 id="添加-ReactiveCocoa-的源到你的工程中-需要使用到-Git-子模块"><a href="#添加-ReactiveCocoa-的源到你的工程中-需要使用到-Git-子模块" class="headerlink" title="添加 ReactiveCocoa 的源到你的工程中, 需要使用到 Git 子模块"></a>添加 <strong>ReactiveCocoa</strong> 的源到你的工程中, 需要使用到 <strong>Git</strong> 子模块</h2><p>这里说到了添加 <strong>Git</strong> 子模块, 关于添加 <strong>Git</strong> 以及添加 <strong>Git</strong> 子模块在这都不作不详细赘述。<br>首先在工程目录中, 添加一个 <strong>Git</strong> 仓库:<br><img src="http://od88oby20.bkt.clouddn.com/img/rac/git%E6%89%80%E6%94%BE%E7%9B%AE%E5%BD%95.png" alt="进入到工程目录中"><br>对应到终端<br><img src="http://od88oby20.bkt.clouddn.com/img/rac/%E7%BB%88%E7%AB%AF%E8%BF%9B%E5%85%A5%E5%B7%A5%E7%A8%8B.png" alt="终端命令进入文件夹"></p>
+<p>调用git初始化命令</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git init</div></pre></td></tr></table></figure>
+<p>显示初始化成功如下图</p>
+<p><img src="http://od88oby20.bkt.clouddn.com/img/rac/%E4%BB%93%E5%BA%93%E5%88%9D%E5%A7%8B%E5%8C%96.png" alt="初始化"></p>
+<p>然后调用命令</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git submodule add https://github.com/ReactiveCocoa/ReactiveCocoa.git external/ReactiveCocoa</div></pre></td></tr></table></figure>
+<p>开始下载 Git 子模块<br><img src="http://od88oby20.bkt.clouddn.com/img/rac/%E5%88%9B%E5%BB%BA%E5%AD%90%E6%A8%A1%E5%9D%97.png" alt="下载子模块"></p>
+<p>下载完毕后, 提示如下:<br><img src="http://od88oby20.bkt.clouddn.com/img/rac/%E5%AD%90%E6%A8%A1%E5%9D%97%E4%B8%8B%E8%BD%BD%E5%AE%8C%E6%AF%95.png" alt="子模块下载完毕"></p>
+<p>此时, 官方给出的导入步骤中的第一步完成</p>
+<h2 id="运行子模块更新命令"><a href="#运行子模块更新命令" class="headerlink" title="运行子模块更新命令"></a>运行子模块更新命令</h2><p>执行以下代码, 更新子模块</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git submodule update --init --recursive</div></pre></td></tr></table></figure>
+<p>运行结果如下:</p>
+<p><img src="http://od88oby20.bkt.clouddn.com/img/rac/%E5%AD%90%E6%A8%A1%E5%9D%97%E6%9B%B4%E6%96%B0%E5%91%BD%E4%BB%A4.png" alt="运行命令后"></p>
+<p>其中更新完成后, 会多出如下几个依赖库:</p>
+<p><img src="http://od88oby20.bkt.clouddn.com/img/rac/%E6%9B%B4%E6%96%B0%E5%AE%8C%E6%88%90%E5%AD%90%E6%A8%A1%E5%9D%97%E5%90%8E.png" alt="依赖库"></p>
+<blockquote>
+<p>注: 最新版本中添加了, <strong>ReactiveSwift</strong> , 并且支持 <strong>Xcode 8</strong></p>
+</blockquote>
+<h2 id="拖拽三种-xcodeproj-文件到你的工程中"><a href="#拖拽三种-xcodeproj-文件到你的工程中" class="headerlink" title="拖拽三种 .xcodeproj 文件到你的工程中"></a>拖拽三种 .xcodeproj 文件到你的工程中</h2><h3 id="Xcode-8"><a href="#Xcode-8" class="headerlink" title="Xcode 8"></a>Xcode 8</h3><p>官方给出的文档中, 已经说明需要将 <code>ReactiveCocoa.xcodeproj</code>, <code>Carthage/Checkouts/ReactiveSwift/ReactiveSwift.xcodeproj</code>, and <code>Carthage/Checkouts/Result/Result.xcodeproj</code> 拖拽到你自己的工程中</p>
+<p>在工程中创建一个 Group 起名 <strong>Frameworks</strong></p>
+<h5 id="导入ReactiveCocoa-xcodeproj"><a href="#导入ReactiveCocoa-xcodeproj" class="headerlink" title="导入ReactiveCocoa.xcodeproj"></a>导入ReactiveCocoa.xcodeproj</h5><p><img src="http://od88oby20.bkt.clouddn.com/gif/rac/%E5%AF%BC%E5%85%A5RAC.gif" alt="导入ReactiveCocoa.xcodeproj"></p>
+<h5 id="导入ReactiveSwift-xcodeproj"><a href="#导入ReactiveSwift-xcodeproj" class="headerlink" title="导入ReactiveSwift.xcodeproj"></a>导入ReactiveSwift.xcodeproj</h5><p><img src="http://od88oby20.bkt.clouddn.com/gif/rac/%E5%AF%BC%E5%85%A5RACSwift.gif" alt="导入ReactiveSwift.xcodeproj"></p>
+<h5 id="导入Reuslt-xcodeproj"><a href="#导入Reuslt-xcodeproj" class="headerlink" title="导入Reuslt.xcodeproj"></a>导入Reuslt.xcodeproj</h5><p><img src="http://od88oby20.bkt.clouddn.com/gif/rac/%E5%AF%BC%E5%85%A5Result.gif" alt="导入Result.xcodeproj"></p>
+<h4 id="Xcode-7-3-1"><a href="#Xcode-7-3-1" class="headerlink" title="Xcode 7.3.1"></a>Xcode 7.3.1</h4><h2 id="在你工程目录的-“General”-的-“Embedded-Binaries”-中添加以上三种Framework"><a href="#在你工程目录的-“General”-的-“Embedded-Binaries”-中添加以上三种Framework" class="headerlink" title="在你工程目录的 “General” 的 “Embedded Binaries” 中添加以上三种Framework"></a>在你工程目录的 “General” 的 “Embedded Binaries” 中添加以上三种Framework</h2><blockquote>
+<p>注:这里因为一般是iOS开发因此举例导入都是iOS的Framework框架</p>
+<h3 id="Xcode-8-1"><a href="#Xcode-8-1" class="headerlink" title="Xcode 8"></a>Xcode 8</h3></blockquote>
+<p>分别引入 <strong>Result.framework</strong>, <strong>ReactiveCocoa.framework</strong>, <strong>ReactiveSwift.framework</strong></p>
+<p><img src="http://od88oby20.bkt.clouddn.com/gif/rac/%E5%AF%BC%E5%85%A5framework.gif" alt="添加三种Framework"></p>
+<h3 id="Xcode-7-3-1-1"><a href="#Xcode-7-3-1-1" class="headerlink" title="Xcode 7.3.1"></a>Xcode 7.3.1</h3>]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[ReactiveCocoa教程 - 入门：1/2]]></title>
       <url>http://muluochenxi.com/2016/09/06/ReactiveCocoa%E6%95%99%E7%A8%8B-%E5%85%A5%E9%97%A8%EF%BC%9A1-2/</url>
       <content type="html"><![CDATA[<blockquote>
