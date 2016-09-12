@@ -42,10 +42,11 @@
 <h5 id="导入ReactiveCocoa-xcodeproj"><a href="#导入ReactiveCocoa-xcodeproj" class="headerlink" title="导入ReactiveCocoa.xcodeproj"></a>导入ReactiveCocoa.xcodeproj</h5><p><img src="http://od88oby20.bkt.clouddn.com/gif/rac/%E5%AF%BC%E5%85%A5RAC.gif" alt="导入ReactiveCocoa.xcodeproj"></p>
 <h5 id="导入ReactiveSwift-xcodeproj"><a href="#导入ReactiveSwift-xcodeproj" class="headerlink" title="导入ReactiveSwift.xcodeproj"></a>导入ReactiveSwift.xcodeproj</h5><p><img src="http://od88oby20.bkt.clouddn.com/gif/rac/%E5%AF%BC%E5%85%A5RACSwift.gif" alt="导入ReactiveSwift.xcodeproj"></p>
 <h5 id="导入Reuslt-xcodeproj"><a href="#导入Reuslt-xcodeproj" class="headerlink" title="导入Reuslt.xcodeproj"></a>导入Reuslt.xcodeproj</h5><p><img src="http://od88oby20.bkt.clouddn.com/gif/rac/%E5%AF%BC%E5%85%A5Result.gif" alt="导入Result.xcodeproj"></p>
-<h4 id="Xcode-7-3-1"><a href="#Xcode-7-3-1" class="headerlink" title="Xcode 7.3.1"></a>Xcode 7.3.1</h4><h2 id="在你工程目录的-“General”-的-“Embedded-Binaries”-中添加以上三种Framework"><a href="#在你工程目录的-“General”-的-“Embedded-Binaries”-中添加以上三种Framework" class="headerlink" title="在你工程目录的 “General” 的 “Embedded Binaries” 中添加以上三种Framework"></a>在你工程目录的 “General” 的 “Embedded Binaries” 中添加以上三种Framework</h2><blockquote>
+<h3 id="Xcode-7-3-1"><a href="#Xcode-7-3-1" class="headerlink" title="Xcode 7.3.1"></a>Xcode 7.3.1</h3><p>xxxx</p>
+<h2 id="在你工程目录的-“General”-的-“Embedded-Binaries”-中添加以上三种Framework"><a href="#在你工程目录的-“General”-的-“Embedded-Binaries”-中添加以上三种Framework" class="headerlink" title="在你工程目录的 “General” 的 “Embedded Binaries” 中添加以上三种Framework"></a>在你工程目录的 “General” 的 “Embedded Binaries” 中添加以上三种Framework</h2><blockquote>
 <p>注:这里因为一般是iOS开发因此举例导入都是iOS的Framework框架</p>
-<h3 id="Xcode-8-1"><a href="#Xcode-8-1" class="headerlink" title="Xcode 8"></a>Xcode 8</h3></blockquote>
-<p>分别引入 <strong>Result.framework</strong>, <strong>ReactiveCocoa.framework</strong>, <strong>ReactiveSwift.framework</strong></p>
+</blockquote>
+<h3 id="Xcode-8-1"><a href="#Xcode-8-1" class="headerlink" title="Xcode 8"></a>Xcode 8</h3><p>分别引入 <strong>Result.framework</strong>, <strong>ReactiveCocoa.framework</strong>, <strong>ReactiveSwift.framework</strong></p>
 <p><img src="http://od88oby20.bkt.clouddn.com/gif/rac/%E5%AF%BC%E5%85%A5framework.gif" alt="添加三种Framework"></p>
 <h3 id="Xcode-7-3-1-1"><a href="#Xcode-7-3-1-1" class="headerlink" title="Xcode 7.3.1"></a>Xcode 7.3.1</h3>]]></content>
     </entry>
