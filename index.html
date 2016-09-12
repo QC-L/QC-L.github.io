@@ -388,18 +388,34 @@
 <blockquote>
 <p>注: 最新版本中添加了, <strong>ReactiveSwift</strong> , 并且支持 <strong>Xcode 8</strong></p>
 </blockquote>
-<h3 id="拖拽三种-xcodeproj-文件到你的工程中"><a href="#拖拽三种-xcodeproj-文件到你的工程中" class="headerlink" title="拖拽三种 .xcodeproj 文件到你的工程中"></a>拖拽三种 .xcodeproj 文件到你的工程中</h3><h4 id="Xcode-8"><a href="#Xcode-8" class="headerlink" title="Xcode 8"></a>Xcode 8</h4><p>官方给出的文档中, 已经说明需要将 <code>ReactiveCocoa.xcodeproj</code>, <code>Carthage/Checkouts/ReactiveSwift/ReactiveSwift.xcodeproj</code>, and <code>Carthage/Checkouts/Result/Result.xcodeproj</code> 拖拽到你自己的工程中</p>
+<h4 id="Xcode-8"><a href="#Xcode-8" class="headerlink" title="Xcode 8"></a>Xcode 8</h4><blockquote>
+<p>注: 不需做任何操作</p>
+</blockquote>
+<h4 id="Xcode-7-3-1"><a href="#Xcode-7-3-1" class="headerlink" title="Xcode 7.3.1"></a>Xcode 7.3.1</h4><p>如果是 <strong>Xcode 7.3.1</strong> 需要注意, 工程中的 <strong>Result</strong> 和 <strong>ReactiveSwift</strong> 都是基于 <strong>Swift3</strong> 的。语法会有很大变化<br>因此, 需要从 <strong>Git</strong> 分支中, <strong>Checkout</strong> 出旧 <strong>tag</strong> 版本的 <strong>ReactiveCocoa</strong> 。<br>查看 <a href="https://github.com/ReactiveCocoa/ReactiveCocoa" target="_blank" rel="external">ReactiveCocoa Git仓库</a> 的 <strong>tag</strong> 找到 v4.2.2。</p>
+<p>进入到 <strong>ReactiveCocoa</strong> 的目录<br><img src="http://od88oby20.bkt.clouddn.com/img/rac/RAC%E6%A3%80%E5%87%BA%E7%89%88%E6%9C%AC.png" alt=""></p>
+<p>进入目录后</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git checkout v4.2.1</div></pre></td></tr></table></figure>
+<p>然后查看工程目录中的 <strong>Cartfile</strong> 文件， 文件内容如下:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">github &quot;antitypical/Result&quot; ~&gt; 2.1.3</div></pre></td></tr></table></figure>
+<p>接下来执行</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">carthage update</div></pre></td></tr></table></figure>
+<p>执行过程如下图</p>
+<p><img src="http://od88oby20.bkt.clouddn.com/img/rac/cartfile.png" alt=""></p>
+<p>执行完成后, 此步骤完成</p>
+<h3 id="拖拽三种-xcodeproj-文件到你的工程中"><a href="#拖拽三种-xcodeproj-文件到你的工程中" class="headerlink" title="拖拽三种 .xcodeproj 文件到你的工程中"></a>拖拽三种 .xcodeproj 文件到你的工程中</h3><h4 id="Xcode-8-1"><a href="#Xcode-8-1" class="headerlink" title="Xcode 8"></a>Xcode 8</h4><p>官方给出的文档中, 已经说明需要将 <code>ReactiveCocoa.xcodeproj</code>, <code>Carthage/Checkouts/ReactiveSwift/ReactiveSwift.xcodeproj</code>, and <code>Carthage/Checkouts/Result/Result.xcodeproj</code> 拖拽到你自己的工程中。 这三个文件相互依赖, 因此缺一不可。</p>
 <p>在工程中创建一个 Group 起名 <strong>Frameworks</strong></p>
 <h5 id="导入ReactiveCocoa-xcodeproj"><a href="#导入ReactiveCocoa-xcodeproj" class="headerlink" title="导入ReactiveCocoa.xcodeproj"></a>导入ReactiveCocoa.xcodeproj</h5><p><img src="http://od88oby20.bkt.clouddn.com/gif/rac/%E5%AF%BC%E5%85%A5RAC.gif" alt="导入ReactiveCocoa.xcodeproj"></p>
 <h5 id="导入ReactiveSwift-xcodeproj"><a href="#导入ReactiveSwift-xcodeproj" class="headerlink" title="导入ReactiveSwift.xcodeproj"></a>导入ReactiveSwift.xcodeproj</h5><p><img src="http://od88oby20.bkt.clouddn.com/gif/rac/%E5%AF%BC%E5%85%A5RACSwift.gif" alt="导入ReactiveSwift.xcodeproj"></p>
 <h5 id="导入Reuslt-xcodeproj"><a href="#导入Reuslt-xcodeproj" class="headerlink" title="导入Reuslt.xcodeproj"></a>导入Reuslt.xcodeproj</h5><p><img src="http://od88oby20.bkt.clouddn.com/gif/rac/%E5%AF%BC%E5%85%A5Result.gif" alt="导入Result.xcodeproj"></p>
-<h4 id="Xcode-7-3-1"><a href="#Xcode-7-3-1" class="headerlink" title="Xcode 7.3.1"></a>Xcode 7.3.1</h4><p>xxxx</p>
+<h4 id="Xcode-7-3-1-1"><a href="#Xcode-7-3-1-1" class="headerlink" title="Xcode 7.3.1"></a>Xcode 7.3.1</h4><p>官方给出的文档中, 已经说明需要将 <code>ReactiveCocoa.xcodeproj</code> and <code>Carthage/Checkouts/Result/Result.xcodeproj</code> 拖拽到你自己的工程中。 ( <strong>Xcode 7.3.1</strong> 的版本中没有  <strong>ReactiveSwift.xcodeproj</strong> )</p>
+<h5 id="导入ReactiveCocoa-xcodeproj-1"><a href="#导入ReactiveCocoa-xcodeproj-1" class="headerlink" title="导入ReactiveCocoa.xcodeproj"></a>导入ReactiveCocoa.xcodeproj</h5><p><img src="http://od88oby20.bkt.clouddn.com/gif/rac/xcode7-3-1.gif" alt="导入ReactiveCocoa"></p>
+<h5 id="导入Reuslt-xcodeproj-1"><a href="#导入Reuslt-xcodeproj-1" class="headerlink" title="导入Reuslt.xcodeproj"></a>导入Reuslt.xcodeproj</h5><p><img src="http://od88oby20.bkt.clouddn.com/gif/rac/xcode7-3-1%E5%AF%BC%E5%85%A5Result.gif" alt="导入Result"></p>
 <h3 id="工程目录的-“General”-的-“Embedded-Binaries”添加Framework"><a href="#工程目录的-“General”-的-“Embedded-Binaries”添加Framework" class="headerlink" title="工程目录的 “General” 的 “Embedded Binaries”添加Framework"></a>工程目录的 “General” 的 “Embedded Binaries”添加Framework</h3><blockquote>
 <p>注:这里因为一般是iOS开发因此举例导入都是iOS的Framework框架</p>
 </blockquote>
-<h4 id="Xcode-8-1"><a href="#Xcode-8-1" class="headerlink" title="Xcode 8"></a>Xcode 8</h4><p>分别引入 <strong>Result.framework</strong>, <strong>ReactiveCocoa.framework</strong>, <strong>ReactiveSwift.framework</strong></p>
+<h4 id="Xcode-8-2"><a href="#Xcode-8-2" class="headerlink" title="Xcode 8"></a>Xcode 8</h4><p>分别引入 <strong>Result.framework</strong>, <strong>ReactiveCocoa.framework</strong>, <strong>ReactiveSwift.framework</strong></p>
 <p><img src="http://od88oby20.bkt.clouddn.com/gif/rac/%E5%AF%BC%E5%85%A5framework.gif" alt="添加三种Framework"></p>
-<h4 id="Xcode-7-3-1-1"><a href="#Xcode-7-3-1-1" class="headerlink" title="Xcode 7.3.1"></a>Xcode 7.3.1</h4><p>xxxxx</p>
+<h4 id="Xcode-7-3-1-2"><a href="#Xcode-7-3-1-2" class="headerlink" title="Xcode 7.3.1"></a>Xcode 7.3.1</h4><p>xxxxx</p>
 
           
         
