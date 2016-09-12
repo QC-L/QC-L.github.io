@@ -64,7 +64,9 @@
 </blockquote>
 <h4 id="Xcode-8-2"><a href="#Xcode-8-2" class="headerlink" title="Xcode 8"></a>Xcode 8</h4><p>分别引入 <strong>Result.framework</strong>, <strong>ReactiveCocoa.framework</strong>, <strong>ReactiveSwift.framework</strong></p>
 <p><img src="http://od88oby20.bkt.clouddn.com/gif/rac/%E5%AF%BC%E5%85%A5framework.gif" alt="添加三种Framework"></p>
-<h4 id="Xcode-7-3-1-2"><a href="#Xcode-7-3-1-2" class="headerlink" title="Xcode 7.3.1"></a>Xcode 7.3.1</h4><p>xxxxx</p>
+<h4 id="Xcode-7-3-1-2"><a href="#Xcode-7-3-1-2" class="headerlink" title="Xcode 7.3.1"></a>Xcode 7.3.1</h4><p>分别引入 <strong>Result.framework</strong>, <strong>ReactiveCocoa.framework</strong></p>
+<p><img src="http://od88oby20.bkt.clouddn.com/gif/rac/xcode7-3-1%E5%BC%95%E5%85%A5Framework.gif" alt="添加两种Framework"></p>
+<p>引入Framework完成后, 编译完成如果没有错误, 该步骤完成。</p>
 ]]></content>
     </entry>
     
