@@ -67,7 +67,7 @@
 <h4 id="Xcode-7-3-1-2"><a href="#Xcode-7-3-1-2" class="headerlink" title="Xcode 7.3.1"></a>Xcode 7.3.1</h4><p>分别引入 <strong>Result.framework</strong>, <strong>ReactiveCocoa.framework</strong></p>
 <p><img src="http://od88oby20.bkt.clouddn.com/gif/rac/xcode7-3-1%E5%BC%95%E5%85%A5Framework.gif" alt="添加两种Framework"></p>
 <p>引入Framework完成后, 编译完成如果没有错误, 该步骤完成。</p>
-<h3 id="如果你的工程不包含-Swift-代码-设置-EMBEDDED-CONTENT-CONTAINS-SWIFT"><a href="#如果你的工程不包含-Swift-代码-设置-EMBEDDED-CONTENT-CONTAINS-SWIFT" class="headerlink" title="如果你的工程不包含 Swift 代码, 设置 EMBEDDED_CONTENT_CONTAINS_SWIFT"></a>如果你的工程不包含 <strong>Swift</strong> 代码, 设置 <strong>EMBEDDED_CONTENT_CONTAINS_SWIFT</strong></h3><p>设置 <strong>Bulid Settings</strong> 中的 <strong>EMBEDDED_CONTENT_CONTAINS_SWIFT</strong> 为 <strong>YES</strong></p>
+<h3 id="如果你的工程不包含Swift代码-设置EMBEDDED-CONTENT-CONTAINS-SWIFT"><a href="#如果你的工程不包含Swift代码-设置EMBEDDED-CONTENT-CONTAINS-SWIFT" class="headerlink" title="如果你的工程不包含Swift代码, 设置EMBEDDED_CONTENT_CONTAINS_SWIFT"></a>如果你的工程不包含Swift代码, 设置EMBEDDED_CONTENT_CONTAINS_SWIFT</h3><p>设置 <strong>Bulid Settings</strong> 中的 <strong>EMBEDDED_CONTENT_CONTAINS_SWIFT</strong> 为 <strong>YES</strong></p>
 <h3 id="验证"><a href="#验证" class="headerlink" title="验证"></a>验证</h3><p>上述几步完成后, 引入 ReactiveCocoa 框架</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">#import &lt;ReactiveCocoa/ReactiveCocoa.h&gt;</div></pre></td></tr></table></figure>
 <p>编译, 运行</p>
