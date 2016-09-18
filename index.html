@@ -359,7 +359,7 @@
              <i class="fa fa-calendar-o"></i>
            </span>
            <span class="post-meta-item-text">字数统计:</span>
-           <span class="post-count">2,521(字)</span>
+           <span class="post-count">2,874(字)</span>
            
          </span>
     
@@ -369,7 +369,7 @@
              <i class="fa fa-calendar-o"></i>
            </span>
            <span class="post-meta-item-text">阅读时长:</span>
-           <span class="post-count">13(分)</span>
+           <span class="post-count">15(分)</span>
            
          </span>
 
@@ -456,11 +456,15 @@
 <p>查看打印结果, 如果是 1111 , 证明框架导入成功。</p>
 <h2 id="CocoaPods引入"><a href="#CocoaPods引入" class="headerlink" title="CocoaPods引入"></a>CocoaPods引入</h2><p>使用 <strong>CocoaPods</strong> 引入时, 其实相对于手动导入就简单很多。</p>
 <p>首先, 在引入 <strong>ReactiveCocoa</strong> 之前, 先来看看 <strong>RAC</strong> 最低支持的 <strong>iOS</strong> 版本是多少。<br><img src="http://od88oby20.bkt.clouddn.com/img/rac/%E6%9C%80%E4%BD%8E%E6%94%AF%E6%8C%81%E7%9A%84%E7%89%88%E6%9C%AC.png" alt="RAC的支持的版本"></p>
-<p>明确了最低支持的版本, 在需要使用 <strong>CocoaPods</strong> 的工程中创建 <strong>Podfile</strong> 文件</p>
+<h3 id="创建并修改Podfile"><a href="#创建并修改Podfile" class="headerlink" title="创建并修改Podfile"></a>创建并修改Podfile</h3><p>明确了最低支持的版本, 在需要使用 <strong>CocoaPods</strong> 的工程中创建 <strong>Podfile</strong> 文件</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pod init</div></pre></td></tr></table></figure>
 <p>然后使用如下命令打开 <strong>Podfile</strong> 文件</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">open -a Xcode Podfile</div></pre></td></tr></table></figure>
-<p>打开后的界面如下图:<br><img src="http://od88oby20.bkt.clouddn.com/img/rac/Podfile.png" alt=""></p>
+<p>打开后的界面如下图:<br><img src="http://od88oby20.bkt.clouddn.com/img/rac/Podfile%E6%96%87%E4%BB%B6%E5%86%85%E5%AE%B9.png" alt=""></p>
+<p>修改后, 如下图:<br><img src="http://od88oby20.bkt.clouddn.com/img/rac/Podfile%E4%BF%AE%E6%94%B9%E5%90%8E.png" alt=""></p>
+<p>代码如下:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"># Uncomment this line to define a global platform for your project</div><div class="line">platform :ios, &apos;8.0&apos;</div><div class="line"></div><div class="line">target &apos;RACCocoaPods&apos; do</div><div class="line">  # Uncomment this line if you&apos;re using Swift or would like to use dynamic frameworks</div><div class="line">use_frameworks!</div><div class="line">pod &apos;ReactiveCocoa&apos;</div><div class="line"></div><div class="line">  # Pods for RACCocoaPods</div><div class="line"></div><div class="line">end</div></pre></td></tr></table></figure>
+<h3 id="检测是否为-Repo-中的-RAC是否为最新版本"><a href="#检测是否为-Repo-中的-RAC是否为最新版本" class="headerlink" title="检测是否为 Repo 中的 RAC是否为最新版本"></a>检测是否为 Repo 中的 RAC是否为最新版本</h3><p>这里会出现问题, 因为 <strong>CocoaPods</strong> 的 <strong>repo</strong> 会时刻更新, 因此在安装前先来查看下 <strong>ReactiveCocoa</strong> 是不是最新版本</p>
 <h2 id="Carthage引入"><a href="#Carthage引入" class="headerlink" title="Carthage引入"></a>Carthage引入</h2>
           
         
