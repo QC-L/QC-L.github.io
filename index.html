@@ -359,7 +359,7 @@
              <i class="fa fa-calendar-o"></i>
            </span>
            <span class="post-meta-item-text">字数统计:</span>
-           <span class="post-count">2,874(字)</span>
+           <span class="post-count">3,548(字)</span>
            
          </span>
     
@@ -369,7 +369,7 @@
              <i class="fa fa-calendar-o"></i>
            </span>
            <span class="post-meta-item-text">阅读时长:</span>
-           <span class="post-count">15(分)</span>
+           <span class="post-count">18(分)</span>
            
          </span>
 
@@ -464,7 +464,26 @@
 <p>修改后, 如下图:<br><img src="http://od88oby20.bkt.clouddn.com/img/rac/Podfile%E4%BF%AE%E6%94%B9%E5%90%8E.png" alt=""></p>
 <p>代码如下:</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"># Uncomment this line to define a global platform for your project</div><div class="line">platform :ios, &apos;8.0&apos;</div><div class="line"></div><div class="line">target &apos;RACCocoaPods&apos; do</div><div class="line">  # Uncomment this line if you&apos;re using Swift or would like to use dynamic frameworks</div><div class="line">use_frameworks!</div><div class="line">pod &apos;ReactiveCocoa&apos;</div><div class="line"></div><div class="line">  # Pods for RACCocoaPods</div><div class="line"></div><div class="line">end</div></pre></td></tr></table></figure>
-<h3 id="检测是否为-Repo-中的-RAC是否为最新版本"><a href="#检测是否为-Repo-中的-RAC是否为最新版本" class="headerlink" title="检测是否为 Repo 中的 RAC是否为最新版本"></a>检测是否为 Repo 中的 RAC是否为最新版本</h3><p>这里会出现问题, 因为 <strong>CocoaPods</strong> 的 <strong>repo</strong> 会时刻更新, 因此在安装前先来查看下 <strong>ReactiveCocoa</strong> 是不是最新版本</p>
+<h3 id="检测-Repo-中的-RAC是否为最新版本"><a href="#检测-Repo-中的-RAC是否为最新版本" class="headerlink" title="检测 Repo 中的 RAC是否为最新版本"></a>检测 Repo 中的 RAC是否为最新版本</h3><p>这里会出现问题, 因为 <strong>CocoaPods</strong> 的 <strong>repo</strong> 会时刻更新, 因此在安装前先来查看下本地的 <strong>repo</strong> 中的 <strong>ReactiveCocoa</strong> 是不是最新版本</p>
+<p>在终端中使用以下命令</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pod search ReactiveCocoa</div></pre></td></tr></table></figure>
+<p>搜索结果如下:</p>
+<p><img src="http://od88oby20.bkt.clouddn.com/img/rac/ReactiveCocoa%E7%89%88%E6%9C%AC.png" alt="Repo中的RAC版本"></p>
+<p>然后打开 <a href="https://github.com/ReactiveCocoa/ReactiveCocoa" target="_blank" rel="external">ReactiveCocoa Github 传送门</a>, 查看其分支中的 <strong>tags</strong> 最新的版本为4.2.2, 如下图<br><img src="http://od88oby20.bkt.clouddn.com/img/rac/tags.png" alt=""></p>
+<p>通过图片发现, 本地 <strong>Repo</strong> 中的库不是最新版本, 因此需要更新下本地 <strong>Repo</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pod repo update</div></pre></td></tr></table></figure>
+<p>这个过程可能会非常的漫长, 接下来大家喝杯咖啡休息休息。</p>
+<p>更新完成后, 再次搜索, 如下图:<br><img src="http://od88oby20.bkt.clouddn.com/img/rac/repo%E6%9B%B4%E6%96%B0%E5%90%8E.png" alt="ReactiveCocoa最新版本"></p>
+<h3 id="执行-pod-init-方法"><a href="#执行-pod-init-方法" class="headerlink" title="执行 pod init 方法"></a>执行 pod init 方法</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pod install --verbose --no-repo-update</div></pre></td></tr></table></figure>
+<h4 id="Xcode-7-3-1-3"><a href="#Xcode-7-3-1-3" class="headerlink" title="Xcode 7.3.1"></a>Xcode 7.3.1</h4><p>编译运行, 一切正常。</p>
+<h4 id="Xcode-8-0"><a href="#Xcode-8-0" class="headerlink" title="Xcode 8.0"></a>Xcode 8.0</h4><p>因为 <strong>Xcode 8.0</strong> 使用了 <strong>Swift 3.0</strong> , 因此使用 <strong>Xcode 8.0</strong> 打开, 会出现以下问题:<br><img src="http://od88oby20.bkt.clouddn.com/img/rac/Xcode8Error.png" alt="Xcode8 错误"></p>
+<p><strong>解决方案:</strong> 如下图, 按步骤进行即可<br><img src="http://od88oby20.bkt.clouddn.com/img/rac/Xcode8%E6%94%B9%E9%94%99.png" alt=""></p>
+<p>编译运行, 一切正常</p>
+<h3 id="验证-1"><a href="#验证-1" class="headerlink" title="验证"></a>验证</h3><p>上述几步完成后, 引入 ReactiveCocoa 框架</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">#import &lt;ReactiveCocoa/ReactiveCocoa.h&gt;</div></pre></td></tr></table></figure>
+<p>编译, 运行</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">RACSignal *singal = [RACSignal createSignal:^RACDisposable *(id&lt;RACSubscriber&gt; subscriber) &#123;</div><div class="line">    [subscriber sendNext:@&quot;1111&quot;];</div><div class="line">    return nil;</div><div class="line">&#125;];</div><div class="line">[singal subscribeNext:^(id x) &#123;</div><div class="line">    NSLog(@&quot;%@&quot;, x);</div><div class="line">&#125;];</div></pre></td></tr></table></figure>
+<p>查看打印结果, 如果是 1111 , 证明框架导入成功。</p>
 <h2 id="Carthage引入"><a href="#Carthage引入" class="headerlink" title="Carthage引入"></a>Carthage引入</h2>
           
         
